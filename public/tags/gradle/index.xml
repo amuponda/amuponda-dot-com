@@ -1,0 +1,34 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>gradle - Tag - A. Muponda</title>
+        <link>https://amuponda.com/tags/gradle/</link>
+        <description>gradle - Tag - A. Muponda</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 26 May 2020 19:20:01 &#43;0000</lastBuildDate><atom:link href="https://amuponda.com/tags/gradle/" rel="self" type="application/rss+xml" /><item>
+    <title>Micronaut application reloading</title>
+    <link>https://amuponda.com/2020/05/26/micronaut-application-reloading/</link>
+    <pubDate>Tue, 26 May 2020 19:20:01 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2020/05/26/micronaut-application-reloading/</guid>
+    <description><![CDATA[Since micronaut has a quick startup time the easiest way to reload an application after making changes is to have automatic restart setup. The first step in order to achieve this is to have this configuration in your application.yml
+micronaut: io: watch: paths: src/main restart: true On its own micronaut.io.watch.paths results in a FileChangedEvent being fired every time a file on the specified path(s) is changed. An event listener can be added if you want to do something on file changes.]]></description>
+</item>
+<item>
+    <title>Wiring up Spring Boot DevTools</title>
+    <link>https://amuponda.com/2019/10/23/wiring-up-spring-boot-devtools/</link>
+    <pubDate>Wed, 23 Oct 2019 16:15:05 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2019/10/23/wiring-up-spring-boot-devtools/</guid>
+    <description><![CDATA[The spring-boot-dev-tools module allows you to automatically restart your application whenever you make changes. It works by detecting changes to files on the classpath. To add devtools to a project just add the dependency to your build.gradle as shown below:
+configurations { developmentOnly runtimeClasspath { extendsFrom developmentOnly } } dependencies { developmentOnly(&#34;org.springframework.boot:spring-boot-devtools&#34;) } If you are using Intellij IDE you can trigger a restart by building the project. When working with an IDE that continually compiles changes you can use a trigger file and restarts will only occur when that file changes.]]></description>
+</item>
+<item>
+    <title>Deploying a grails vue app to heroku using gradle</title>
+    <link>https://amuponda.com/2018/11/06/deploying-a-grails-vue-app-to-heroku-using-gradle/</link>
+    <pubDate>Tue, 06 Nov 2018 15:52:39 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2018/11/06/deploying-a-grails-vue-app-to-heroku-using-gradle/</guid>
+    <description><![CDATA[Continuing from my previous post on combining the server and client projects of a grails vue profile app into a single executable jar file, you can make use of the heroku-gradle plugin to deploy the resulting jar to Heroku. The tutorial here can help get started with deploying gradle projects to Heroku. Prior to using the plugin you would need to take the following steps to deploy.
+Define your Procfile with the command to execute the web app``` web: java -Dserver.]]></description>
+</item>
+</channel>
+</rss>

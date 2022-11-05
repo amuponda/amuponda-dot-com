@@ -1,0 +1,109 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>micronaut - Tag - A. Muponda</title>
+        <link>https://amuponda.com/tags/micronaut/</link>
+        <description>micronaut - Tag - A. Muponda</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 31 Jan 2022 08:36:06 &#43;0000</lastBuildDate><atom:link href="https://amuponda.com/tags/micronaut/" rel="self" type="application/rss+xml" /><item>
+    <title>Using SQL Changelogs with the Micronaut Liquibase library</title>
+    <link>https://amuponda.com/2022/01/31/using-sql-changelogs-with-the-micronaut-liquibase-library/</link>
+    <pubDate>Mon, 31 Jan 2022 08:36:06 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2022/01/31/using-sql-changelogs-with-the-micronaut-liquibase-library/</guid>
+    <description><![CDATA[1. Introduction Micronaut provides an integration with Liquibase to make it easy to manage database schema changes. This tutorial will show you can write your changelog files using SQL instead of XML. To begin you need to add the micronaut-liquibase dependency to your build.gradle file.
+implementation(&#34;io.micronaut.liquibase:micronaut-liquibase&#34;) 2. Configuration Set the schema-generation configuration for your datasource to NONE so that Micronaut Data does not attempt to generate the schema for you after the liquibase changelogs have been run.]]></description>
+</item>
+<item>
+    <title>Configuring HTTP to HTTPS redirects on AWS classic load balancer</title>
+    <link>https://amuponda.com/2021/11/20/configuring-http-to-https-redirects-on-aws-classic-load-balancer/</link>
+    <pubDate>Sat, 20 Nov 2021 06:18:16 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2021/11/20/configuring-http-to-https-redirects-on-aws-classic-load-balancer/</guid>
+    <description><![CDATA[If you have a Micronaut application deployed on AWS Elastic Beanstalk in an environment with a classic load balancer it is a straightforward process to redirect your HTTP traffic to HTTPS.
+Create a file named ./platform/nginx/conf.d/elasticbeanstalk/00_application.conf in the build file you upload to Elastic Beanstalk.
+location / { set $redirect 0; if ($http\_x\_forwarded\_proto != &#34;https&#34;) { set $redirect 1; } if ($http\_user\_agent ~\* &#34;ELB-HealthChecker&#34;) { set $redirect 0; } if ($redirect = 1) { return 301 https://$host$request\_uri; } proxy\_pass http://127.]]></description>
+</item>
+<item>
+    <title>How to bootstrap a Micronaut Vue SPA</title>
+    <link>https://amuponda.com/2020/12/05/how-to-bootstrap-a-micronaut-vue-spa/</link>
+    <pubDate>Sat, 05 Dec 2020 06:48:44 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2020/12/05/how-to-bootstrap-a-micronaut-vue-spa/</guid>
+    <description><![CDATA[Bootstrapping a Micronaut Vue Single Page Application is straightforward and similar to the approach you would take if doing with React. The result is a gradle multi project build consisting of a client and server subprojects.
+1. Create client project In the client folder create a new Vue project using the vue-cli. Add the following build.gradle file.
+plugins { id &#34;com.github.node-gradle.node&#34; version &#34;2.2.4&#34; } node { version = &#39;10.13.0&#39; // https://nodejs.]]></description>
+</item>
+<item>
+    <title>How to use an embedded redis server with Micronaut</title>
+    <link>https://amuponda.com/2020/10/26/how-to-use-an-embedded-redis-server-with-micronaut/</link>
+    <pubDate>Mon, 26 Oct 2020 04:52:17 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2020/10/26/how-to-use-an-embedded-redis-server-with-micronaut/</guid>
+    <description><![CDATA[Micronaut provides support to use an embedded redis server which can be handy for running your tests.
+To run an embedded redis server you need to include the embedded redis dependency in your build.gradle file.
+testImplementation &quot;com.github.kstyrc:embedded-redis:0.6&quot;
+This will automatically start and the shutdown an embedded instance of Redis if none is available for the configured Redis URI.
+Micronaut achieves this by adding EmbeddedRedisServer which implements BeanCreatedEventListener and listens for the creation of the redis configuration.]]></description>
+</item>
+<item>
+    <title>How to log requests and responses in micronaut</title>
+    <link>https://amuponda.com/2020/10/18/how-to-log-requests-and-responses-in-micronaut/</link>
+    <pubDate>Sun, 18 Oct 2020 20:25:10 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2020/10/18/how-to-log-requests-and-responses-in-micronaut/</guid>
+    <description><![CDATA[Micronaut allows you to customize the Netty pipeline by using a bean event listener. You can therefore add custom channel handlers to the pipeline. Using this knowledge together with Logbook library you can easily log a request and the corresponding response.
+1. Add logbook dependencies Add the Logbook dependencies logbook-core and logbook-netty to your build.gradle.
+implementation(&quot;org.zalando:logbook-core:2.3.0&quot;) implementation(&quot;org.zalando:logbook-netty:2.3.0&quot;)
+2. Add the Logbook bean Create a bean of type Logbook via an @Factory annotated config class to be used by the pipeline customizer.]]></description>
+</item>
+<item>
+    <title>Using a random open port for tests in Micronaut</title>
+    <link>https://amuponda.com/2020/08/04/using-a-random-open-port-for-tests-in-micronaut/</link>
+    <pubDate>Tue, 04 Aug 2020 07:04:01 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2020/08/04/using-a-random-open-port-for-tests-in-micronaut/</guid>
+    <description><![CDATA[By default if the configuration property micronaut.server.port is not specified a Micronaut application will run on port 8080 and tests will run on a random port. If however you specify a port for the application to run on, your tests will also run on that port.
+For tests to run on a random port again you need to set micronaut.server.port to either -1 or ${random.port} in your application-test.yml config file. ${random.]]></description>
+</item>
+<item>
+    <title>Merging OpenAPI Schemas in Micronaut</title>
+    <link>https://amuponda.com/2020/06/01/merging-openapi-schemas-in-micronaut/</link>
+    <pubDate>Mon, 01 Jun 2020 18:56:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2020/06/01/merging-openapi-schemas-in-micronaut/</guid>
+    <description><![CDATA[Merging your own schemas into the generated OpenAPI specification is pretty straightforward. With OpenAPI integrated into your application, all you need to do is to add the system property micronaut.openapi.additional.files
+build.gradle
+tasks.withType(GroovyCompile) { ... groovyOptions.forkOptions.jvmArgs.add(&#34;-Dmicronaut.openapi.additional.files=${project.projectDir}/src/main/resources/swagger&#34;.toString()) ... } Specifying the location of the additional schema files. In this case I have it set to src/main/resources/swagger.
+It is worth noting what information is taken from additional files:
+Optional.ofNullable(from.getTags()).ifPresent(tags -&gt; tags.forEach(to::addTagsItem)); Optional.ofNullable(from.getServers()).ifPresent(servers -&gt; servers.]]></description>
+</item>
+<item>
+    <title>Micronaut application reloading</title>
+    <link>https://amuponda.com/2020/05/26/micronaut-application-reloading/</link>
+    <pubDate>Tue, 26 May 2020 19:20:01 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2020/05/26/micronaut-application-reloading/</guid>
+    <description><![CDATA[Since micronaut has a quick startup time the easiest way to reload an application after making changes is to have automatic restart setup. The first step in order to achieve this is to have this configuration in your application.yml
+micronaut: io: watch: paths: src/main restart: true On its own micronaut.io.watch.paths results in a FileChangedEvent being fired every time a file on the specified path(s) is changed. An event listener can be added if you want to do something on file changes.]]></description>
+</item>
+<item>
+    <title>Micronaut i18n using MessageSource</title>
+    <link>https://amuponda.com/2020/04/28/micronaut-i18n-using-messagesource/</link>
+    <pubDate>Tue, 28 Apr 2020 19:46:29 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2020/04/28/micronaut-i18n-using-messagesource/</guid>
+    <description><![CDATA[To implement i18n in micronaut you need to have a bean that is a subclass of ResourceBundleMessageSource. This can be done by using a factory to create the bean:
+@Factory class AppConfig { @Bean MessageSource messageSource() { new ResourceBundleMessageSource(&#39;com.example.Messages&#39;) } } Or just having a @Singleton annotated class
+@Singleton class AppBundle extends ResourceBundleMessageSource { AppBundle() { super(&#39;com.example.Messages&#39;) } } In both cases we pass the baseName of our bundle. After this you create your locale specific property files Messages.]]></description>
+</item>
+<item>
+    <title>Micronaut profile based configuration properties</title>
+    <link>https://amuponda.com/2020/02/24/micronaut-profile-based-configuration-properties/</link>
+    <pubDate>Mon, 24 Feb 2020 17:49:02 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2020/02/24/micronaut-profile-based-configuration-properties/</guid>
+    <description><![CDATA[Micronaut allows environment specific configuration in the same manner as Spring Boot. It searches for your application.yml, application.properties, application.json or application.groovy file. So for your production environment you could define application-prod.yml:
+micronaut: application: name: hello-service hello: message: This is prod The configuration properties can be accessed using the @Value annotation in controllers and services.
+@Value(&#39;${hello.message}&#39;) private String message When you run the jar you can specify the environment using the micronaut.]]></description>
+</item>
+</channel>
+</rss>

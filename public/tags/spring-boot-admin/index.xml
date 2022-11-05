@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>spring-boot-admin - Tag - A. Muponda</title>
+        <link>https://amuponda.com/tags/spring-boot-admin/</link>
+        <description>spring-boot-admin - Tag - A. Muponda</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Nov 2018 17:19:55 &#43;0000</lastBuildDate><atom:link href="https://amuponda.com/tags/spring-boot-admin/" rel="self" type="application/rss+xml" /><item>
+    <title>Adding Spring Boot Admin to a Grails application</title>
+    <link>https://amuponda.com/2018/11/29/adding-spring-boot-admin-to-a-grails-application/</link>
+    <pubDate>Thu, 29 Nov 2018 17:19:55 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2018/11/29/adding-spring-boot-admin-to-a-grails-application/</guid>
+    <description><![CDATA[In this blog post, the first part of the Spring Boot Admin series, I will illustrate how to use Spring Boot Admin to monitor and manage a Grails application.
+1. Setting up the Spring Boot Admin Server The getting started guide clearly explains how to setup an admin server. This basically involves creating a simple Spring Boot app and adding the SBA server dependency:implementation('de.codecentric:spring-boot-admin-starter-server:1.5.7')Since grails in built on top of spring boot 1.]]></description>
+</item>
+</channel>
+</rss>

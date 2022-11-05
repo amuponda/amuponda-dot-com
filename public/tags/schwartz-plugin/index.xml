@@ -1,0 +1,26 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>schwartz-plugin - Tag - A. Muponda</title>
+        <link>https://amuponda.com/tags/schwartz-plugin/</link>
+        <description>schwartz-plugin - Tag - A. Muponda</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 17 Nov 2019 04:40:13 &#43;0000</lastBuildDate><atom:link href="https://amuponda.com/tags/schwartz-plugin/" rel="self" type="application/rss+xml" /><item>
+    <title>Workaround for using the grails-schwartz-plugin in Grails 4</title>
+    <link>https://amuponda.com/2019/11/17/workaround-for-using-the-grails-schwartz-plugin-in-grails-4/</link>
+    <pubDate>Sun, 17 Nov 2019 04:40:13 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2019/11/17/workaround-for-using-the-grails-schwartz-plugin-in-grails-4/</guid>
+    <description><![CDATA[Version 1.0.1 of the grails-schwartz-plugin will not work with a grails 4 application as I recently found whilst trying to upgrade an app. You will get the following compilation error:
+CONFIGURE SUCCESSFUL in 1s Error | Failed to compile create-job.groovy: startup failed: create-job.groovy: 23: unable to resolve class grails.transaction.Transactional @ line 23, column 1. import grails.transaction.Transactional ^ 1 error (Use --stacktrace to see the full trace) Error | Command \[run-app\] error: null (Use --stacktrace to see the full trace) Process finished with exit code 1 The create-job.]]></description>
+</item>
+<item>
+    <title>Triggering a schwartz job to run immediately in grails</title>
+    <link>https://amuponda.com/2019/11/14/triggering-a-schwartz-job-to-run-immediately-in-grails/</link>
+    <pubDate>Thu, 14 Nov 2019 08:10:42 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2019/11/14/triggering-a-schwartz-job-to-run-immediately-in-grails/</guid>
+    <description><![CDATA[The grails schwartz plugin comes with a utility service, the QuartzService, which you can use to trigger a job immediately.
+For example, if you want to run a job on application startup, you can just call the services&rsquo; triggerJob method from the init closure in Bootstrap.groovy
+package schwartz.grails.plugin class BootStrap { def quartzService def helloWorldJobService def init = { servletContext -&gt; quartzService.triggerJob(helloWorldJobService.jobKey) } def destroy = { } } The triggerJob method takes a JobKey as a parameter.]]></description>
+</item>
+</channel>
+</rss>

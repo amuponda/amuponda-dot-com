@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>The grails database migration plugin - A. Muponda</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="The grails database migration plugin" />
+<meta property="og:description" content="Grails has a comprehensive guide on how to use the database-migration plugin for your greenfield Grails projects. The guide however does not explain clearly how to go about this with an existing app. This blog post details how to setup it up in that scenario.
+The first thing is to set your datasource dbCreate property to none in the application.yml:
+dataSource: dbCreate: none And install the plugin as mentioned in the guide." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://amuponda.com/2019/04/22/the-grails-database-migration-plugin/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-04-22T17:12:51+00:00" />
+<meta property="article:modified_time" content="2019-04-22T17:12:51+00:00" /><meta property="og:site_name" content="A. Muponda" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The grails database migration plugin"/>
+<meta name="twitter:description" content="Grails has a comprehensive guide on how to use the database-migration plugin for your greenfield Grails projects. The guide however does not explain clearly how to go about this with an existing app. This blog post details how to setup it up in that scenario.
+The first thing is to set your datasource dbCreate property to none in the application.yml:
+dataSource: dbCreate: none And install the plugin as mentioned in the guide."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://amuponda.com/2019/04/22/the-grails-database-migration-plugin/" /><link rel="prev" href="https://amuponda.com/2019/04/08/adding-a-jar-to-a-grails-project/" /><link rel="next" href="https://amuponda.com/2019/10/23/wiring-up-spring-boot-devtools/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "The grails database migration plugin",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/amuponda.com\/2019\/04\/22\/the-grails-database-migration-plugin\/"
+        },"genre": "posts","keywords": "Grails, Grails","wordcount":  230 ,
+        "url": "https:\/\/amuponda.com\/2019\/04\/22\/the-grails-database-migration-plugin\/","datePublished": "2019-04-22T17:12:51+00:00","dateModified": "2019-04-22T17:12:51+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="A. Muponda">atm</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="A. Muponda">atm</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">The grails database migration plugin</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2019-04-22">2019-04-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;230 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>Grails has a comprehensive <a href="https://guides.grails.org/grails-database-migration/guide/index.html" target="_blank" rel="noopener noreffer ">guide</a> on how to use the <a href="http://plugins.grails.org/plugin/grails/database-migration" target="_blank" rel="noopener noreffer ">database-migration plugin</a> for your greenfield Grails projects. The guide however does not explain clearly how to go about this with an existing app. This blog post details how to setup it up in that scenario.</p>
+<p>The first thing is to set your datasource <code>dbCreate</code> property to <code>none</code> in the <code>application.yml</code>:</p>
+<pre tabindex="0"><code>dataSource:
+          dbCreate: none
+</code></pre><p>And install the plugin as mentioned in the guide. With the plugin installed and the migrations folder location setup in <code>build.gradle</code> the next step is to create the <code>changelog.groovy</code> file. Instead of running the:</p>
+<p><code>$ grails dbm-generate-gorm-changelog</code></p>
+<p>or</p>
+<p><code>$ grails dbm-generate-changelog grails</code></p>
+<p>commands to create <code>changelog.groovy</code> based on your GORM classes or database respectively run:</p>
+<p><code>$ grails dbm-create-changelog changelog.groovy</code></p>
+<p>This creates an empty <code>changelog.groovy</code> file eliminating the need to sync the current state of the database with the plugin&rsquo;s migrations tracking tables. The only thing left is to create the <code>DATABASECHANGELOG</code> and <code>DATABASECHANGELOGLOCK</code> tables in the database. You can either run:</p>
+<p><code>$ grails dbm-update</code></p>
+<p>Or more appropriately setup such that migrations are run on startup:</p>
+<p><em>grails-app/conf/application.yml</em></p>
+<pre tabindex="0"><code>grails:
+    plugin:
+        databasemigration:
+            updateOnStart: true
+            updateOnStartFileName: changelog.groovy
+</code></pre><p>And then just run:</p>
+<p><code>$ grails run-app</code></p>
+<p>Which will create the two tables in the database on the first run. From here on in you can proceed as normal and create change sets manually.</p>
+<p>You can find a simple app illustrating this on <a href="https://github.com/amuponda/blog-posts/tree/master/grails-dbmigration" target="_blank" rel="noopener noreffer ">github</a>.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2019-04-22</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://amuponda.com/2019/04/22/the-grails-database-migration-plugin/" data-title="The grails database migration plugin" data-hashtags="Grails,Grails"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://amuponda.com/2019/04/22/the-grails-database-migration-plugin/" data-hashtag="Grails"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://amuponda.com/2019/04/22/the-grails-database-migration-plugin/" data-title="The grails database migration plugin"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://amuponda.com/2019/04/22/the-grails-database-migration-plugin/" data-title="The grails database migration plugin"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://amuponda.com/2019/04/22/the-grails-database-migration-plugin/" data-title="The grails database migration plugin"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/grails/">Grails</a>,&nbsp;<a href="/tags/grails/">Grails</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2019/04/08/adding-a-jar-to-a-grails-project/" class="prev" rel="prev" title="Adding a JAR to a Grails project"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Adding a JAR to a Grails project</a>
+            <a href="/2019/10/23/wiring-up-spring-boot-devtools/" class="next" rel="next" title="Wiring up Spring Boot DevTools">Wiring up Spring Boot DevTools<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

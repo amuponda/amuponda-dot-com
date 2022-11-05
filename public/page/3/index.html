@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+	<meta name="generator" content="Hugo 0.105.0">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>A. Muponda</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="A. Muponda" />
+<meta property="og:description" content="This is my cool site" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://amuponda.com/" /><meta property="og:site_name" content="A. Muponda" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="A. Muponda"/>
+<meta name="twitter:description" content="This is my cool site"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://amuponda.com/" /><link rel="alternate" href="/index.xml" type="application/rss+xml" title="A. Muponda">
+    <link rel="feed" href="/index.xml" type="application/rss+xml" title="A. Muponda"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "url": "https:\/\/amuponda.com\/","inLanguage": "en-us","description": "This is my cool site","name": "A. Muponda"
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="A. Muponda">atm</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="A. Muponda">atm</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="page home" data-home="posts"><div class="home-profile"><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2019/12/28/handle-exceptions-in-micronaut-scheduled-tasks/">Handle exceptions in micronaut scheduled tasks</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-12-28">2019-12-28</time></span></div><div class="content">By default micronaut simply logs any exceptions that are thrown during scheduled tasks. To change this behaviour you simply have to override the bean DefaultTaskExceptionHandler, the default implementation of TaskExceptionHandler with your own implementation:
+@Singleton @Replaces(DefaultTaskExceptionHandler.class) @Slf4j class HelloWorldTaskExceptionHandler implements TaskExceptionHandler&lt;Object, Throwable&gt; { //override handle method here } @Replaces lets a bean specify that it replaces another bean. All that is left is to implement the handle method which takes the offending bean and the exception that was thrown as arguments.</div><div class="post-footer">
+        <a href="/2019/12/28/handle-exceptions-in-micronaut-scheduled-tasks/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/micronaut/">micronaut</a>,&nbsp;<a href="/tags/micronaut/">micronaut</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2019/11/17/workaround-for-using-the-grails-schwartz-plugin-in-grails-4/">Workaround for using the grails-schwartz-plugin in Grails 4</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-11-17">2019-11-17</time></span></div><div class="content">Version 1.0.1 of the grails-schwartz-plugin will not work with a grails 4 application as I recently found whilst trying to upgrade an app. You will get the following compilation error:
+CONFIGURE SUCCESSFUL in 1s Error | Failed to compile create-job.groovy: startup failed: create-job.groovy: 23: unable to resolve class grails.transaction.Transactional @ line 23, column 1. import grails.transaction.Transactional ^ 1 error (Use --stacktrace to see the full trace) Error | Command \[run-app\] error: null (Use --stacktrace to see the full trace) Process finished with exit code 1 The create-job.</div><div class="post-footer">
+        <a href="/2019/11/17/workaround-for-using-the-grails-schwartz-plugin-in-grails-4/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/grails/">Grails</a>,&nbsp;<a href="/tags/grails/">Grails</a>,&nbsp;<a href="/tags/quartz/">quartz</a>,&nbsp;<a href="/tags/schwartz-plugin/">schwartz-plugin</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2019/11/14/triggering-a-schwartz-job-to-run-immediately-in-grails/">Triggering a schwartz job to run immediately in grails</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-11-14">2019-11-14</time></span></div><div class="content">The grails schwartz plugin comes with a utility service, the QuartzService, which you can use to trigger a job immediately.
+For example, if you want to run a job on application startup, you can just call the services&rsquo; triggerJob method from the init closure in Bootstrap.groovy
+package schwartz.grails.plugin class BootStrap { def quartzService def helloWorldJobService def init = { servletContext -&gt; quartzService.triggerJob(helloWorldJobService.jobKey) } def destroy = { } } The triggerJob method takes a JobKey as a parameter.</div><div class="post-footer">
+        <a href="/2019/11/14/triggering-a-schwartz-job-to-run-immediately-in-grails/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/grails/">Grails</a>,&nbsp;<a href="/tags/grails/">Grails</a>,&nbsp;<a href="/tags/schwartz-plugin/">schwartz-plugin</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2019/10/23/wiring-up-spring-boot-devtools/">Wiring up Spring Boot DevTools</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-10-23">2019-10-23</time></span></div><div class="content">The spring-boot-dev-tools module allows you to automatically restart your application whenever you make changes. It works by detecting changes to files on the classpath. To add devtools to a project just add the dependency to your build.gradle as shown below:
+configurations { developmentOnly runtimeClasspath { extendsFrom developmentOnly } } dependencies { developmentOnly(&#34;org.springframework.boot:spring-boot-devtools&#34;) } If you are using Intellij IDE you can trigger a restart by building the project. When working with an IDE that continually compiles changes you can use a trigger file and restarts will only occur when that file changes.</div><div class="post-footer">
+        <a href="/2019/10/23/wiring-up-spring-boot-devtools/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/dev-tools/">dev-tools</a>,&nbsp;<a href="/tags/devtools/">DevTools</a>,&nbsp;<a href="/tags/gradle/">gradle</a>,&nbsp;<a href="/tags/spring-boot/">Spring Boot</a>,&nbsp;<a href="/tags/spring-boot/">Spring Boot</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2019/04/22/the-grails-database-migration-plugin/">The grails database migration plugin</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-04-22">2019-04-22</time></span></div><div class="content">Grails has a comprehensive guide on how to use the database-migration plugin for your greenfield Grails projects. The guide however does not explain clearly how to go about this with an existing app. This blog post details how to setup it up in that scenario.
+The first thing is to set your datasource dbCreate property to none in the application.yml:
+dataSource: dbCreate: none And install the plugin as mentioned in the guide.</div><div class="post-footer">
+        <a href="/2019/04/22/the-grails-database-migration-plugin/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/grails/">Grails</a>,&nbsp;<a href="/tags/grails/">Grails</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2019/04/08/adding-a-jar-to-a-grails-project/">Adding a JAR to a Grails project</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-04-08">2019-04-08</time></span></div><div class="content">When you find yourself working with an old Grails 2 project and you need to experiment with changes to one of its the dependencies without having to publish a snapshot version to an artifact repo, you can always drop the .jar into the lib folder and you are good to go. If you do not have a .pom file associated with the jar, attempting to use the local maven repo (.</div><div class="post-footer">
+        <a href="/2019/04/08/adding-a-jar-to-a-grails-project/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/grails/">Grails</a></div></div>
+</article><ul class="pagination"><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/">1</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/2/">2</a>
+                    </span>
+                </li><li class="page-item active">
+                    <span class="page-link">
+                        <a href="/page/3/">3</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/4/">4</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/5/">5</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/6/">6</a>
+                    </span>
+                </li></ul></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.6.0/dist/index.umd.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"data":{"id-1":"This is my cool site"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

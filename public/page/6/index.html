@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+	<meta name="generator" content="Hugo 0.105.0">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>A. Muponda</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="A. Muponda" />
+<meta property="og:description" content="This is my cool site" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://amuponda.com/" /><meta property="og:site_name" content="A. Muponda" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="A. Muponda"/>
+<meta name="twitter:description" content="This is my cool site"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://amuponda.com/" /><link rel="alternate" href="/index.xml" type="application/rss+xml" title="A. Muponda">
+    <link rel="feed" href="/index.xml" type="application/rss+xml" title="A. Muponda"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "url": "https:\/\/amuponda.com\/","inLanguage": "en-us","description": "This is my cool site","name": "A. Muponda"
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="A. Muponda">atm</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="A. Muponda">atm</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="page home" data-home="posts"><div class="home-profile"><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2018/10/05/using-limit-with-group_concat-in-mariadb-10.3.3-/">Using LIMIT with GROUP_CONCAT  in MariaDB 10.3.3+</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-10-05">2018-10-05</time></span></div><div class="content">Prior to version 10.3.3 of MariaDB it was not possible to use LIMIT in a GROUP_CONCAT query. So in cases you wanted to select the first n elements of a GROUP_CONCAT query you had to make use of SUBSTRING_INDEX.``` CREATE TABLE t1 (id BIGINT NOT NULL AUTO_INCREMENT, email VARCHAR(255), PRIMARY KEY(id)); INSERT INTO t1 (email) VALUES (&rsquo;email&rsquo;), (&rsquo;test2@email.com&rsquo;), (&rsquo;test1@email.com&rsquo;);
+To select the first element you would execute the following query: SELECT SUBSTRING_INDEX(GROUP_CONCAT(email SEPARATOR &lsquo;::&rsquo;), &lsquo;::&rsquo;, n) FROM t1;</div><div class="post-footer">
+        <a href="/2018/10/05/using-limit-with-group_concat-in-mariadb-10.3.3-/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/group-concat/">group-concat</a>,&nbsp;<a href="/tags/mariadb/">mariadb</a>,&nbsp;<a href="/tags/mariadb/">mariadb</a>,&nbsp;<a href="/tags/sql-titbits/">sql-titbits</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2018/08/03/shortcut-for-excluding-null-and-empty-strings-in-mariadb/">Shortcut for excluding null and empty strings in MariaDB</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-08-03">2018-08-03</time></span></div><div class="content">Up until now when given the table below and working with MariaDB:CREATE TABLE t1 (id BIGINT NOT NULL AUTO\_INCREMENT, email VARCHAR(255) NULL, PRIMARY KEY(id)); INSERT INTO t1 (email) VALUES (''), (' '), ('test@email.com'), (NULL);I would use the following SELECT query in order to eliminate both empty strings and NULL values from the result set:SELECT email FROM t1 WHERE email &lt;&gt; '' AND email IS NOT NULL;However, this can be shortened to the more succinct:SELECT email FROM t1 WHERE email &gt; '';To explain, empty strings of any length are equal:MariaDB \[(none)\]&gt; SELECT '' = ' '; +--------------+ | '' = ' ' | +--------------+ | 1 | +--------------+ 1 row in set (0.</div><div class="post-footer">
+        <a href="/2018/08/03/shortcut-for-excluding-null-and-empty-strings-in-mariadb/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/mariadb/">mariadb</a>,&nbsp;<a href="/tags/mariadb/">mariadb</a>,&nbsp;<a href="/tags/sql-titbits/">sql-titbits</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2018/07/15/searching-for-objects-in-large-datasets/">Searching for objects in large datasets</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-07-15">2018-07-15</time></span></div><div class="content">Groovy provides a number of useful methods for working with Lists. One that use all the time for searching for objects in a list is the find method. Looking under the hood you will find that is uses a linear search via the classic for loop to find the matching object. [java] public static T find(T[] self, @ClosureParams(FirstParam.Component.class) Closure condition) { BooleanClosureWrapper bcw = new BooleanClosureWrapper(condition); for (T element : self) { if (bcw.</div><div class="post-footer">
+        <a href="/2018/07/15/searching-for-objects-in-large-datasets/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/groovy/">Groovy</a>,&nbsp;<a href="/tags/groovy/">Groovy</a>,&nbsp;<a href="/tags/java/">Java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2018/07/09/vuejs-using-mdbootstraps-custom-input-with-vee-validate/">Vuejs using MDBootstrap's custom input with Vee-validate</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-07-09">2018-07-09</time></span></div><div class="content">The vee-validate directive is used as follows: [html] {{ errors.first(&rsquo;email) }} [/html] Essentially, vee-validate creates an array of validation errors via the ErrorBag wrapper class and you can access that array in your template and javascript. MDBoostrap provides a custom input component, and according to the docs , for it to work with v-model, the inside the component should:
+Bind the value attribute to a value prop - (check) you can pass in a value prop On input, emit its own custom input event with the new value - (check) it has a custom event called &lsquo;input&rsquo; fired whenever the @change and @input events occur on the nested input tag So combining the two you can change the html to this: [html] &lt;md-input v-validate=&quot;&lsquo;required|email&rsquo;&quot; name=&ldquo;email&rdquo; label=&ldquo;Email&rdquo; icon=&ldquo;envelope&rdquo; :value=&ldquo;email&rdquo; @input=&ldquo;email = $event&rdquo; /&gt; {{ errors.</div><div class="post-footer">
+        <a href="/2018/07/09/vuejs-using-mdbootstraps-custom-input-with-vee-validate/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/mdbootstrap/">mdbootstrap</a>,&nbsp;<a href="/tags/vee-validate/">vee-validate</a>,&nbsp;<a href="/tags/vue.js/">Vue.js</a>,&nbsp;<a href="/tags/vuejs/">vuejs</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2018/06/29/grails-spring-security-rest-custom-authentication-failure-response/">Grails Spring Security Rest Custom Authentication Failure Response</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-06-29">2018-06-29</time></span></div><div class="content">The grails spring security rest plugin only returns a 401 status code for failed authentication. This creates a problem because you do not know the specific reason for failure and are forced to show the user a generic error message. The issue can be solved by overriding RestAuthenticationFailureHandler and registering your own implementation as a bean in resources.groovy. Grails plugins compile first allowing you to override classes as needed. In particular you override this method:</div><div class="post-footer">
+        <a href="/2018/06/29/grails-spring-security-rest-custom-authentication-failure-response/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/grails/">Grails</a>,&nbsp;<a href="/tags/grails/">Grails</a>,&nbsp;<a href="/tags/spring-security/">Spring Security</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2018/06/24/vue.js-watch-changes-to-an-array-of-objects/">Vue.js watch changes to an array of objects</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2018-06-24">2018-06-24</time></span></div><div class="content">Vue.js provides the watch option for responding to changes in data. By default, when working with an array of objects, a watch object&rsquo;s handler function is only triggered by mutations to the array itself and not the values of the object properties. Turning to the docs, in order to detect nested value changes in objects you need to set the watch object&rsquo;s deep property to true as shown below:vm.$watch('todos', callback, { deep: true });This is Illustrated with this simple codepen example.</div><div class="post-footer">
+        <a href="/2018/06/24/vue.js-watch-changes-to-an-array-of-objects/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/vue.js/">Vue.js</a>,&nbsp;<a href="/tags/vuejs/">vuejs</a></div></div>
+</article><ul class="pagination"><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/">1</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link" aria-hidden="true">&hellip;</span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/4/">4</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/5/">5</a>
+                    </span>
+                </li><li class="page-item active">
+                    <span class="page-link">
+                        <a href="/page/6/">6</a>
+                    </span>
+                </li></ul></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.6.0/dist/index.umd.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"data":{"id-1":"This is my cool site"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

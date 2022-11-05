@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Spring Security - Tag - A. Muponda</title>
+        <link>https://amuponda.com/tags/spring-security/</link>
+        <description>Spring Security - Tag - A. Muponda</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 29 Jun 2018 08:58:14 &#43;0000</lastBuildDate><atom:link href="https://amuponda.com/tags/spring-security/" rel="self" type="application/rss+xml" /><item>
+    <title>Grails Spring Security Rest Custom Authentication Failure Response</title>
+    <link>https://amuponda.com/2018/06/29/grails-spring-security-rest-custom-authentication-failure-response/</link>
+    <pubDate>Fri, 29 Jun 2018 08:58:14 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2018/06/29/grails-spring-security-rest-custom-authentication-failure-response/</guid>
+    <description><![CDATA[The grails spring security rest plugin only returns a 401 status code for failed authentication. This creates a problem because you do not know the specific reason for failure and are forced to show the user a generic error message. The issue can be solved by overriding RestAuthenticationFailureHandler and registering your own implementation as a bean in resources.groovy. Grails plugins compile first allowing you to override classes as needed. In particular you override this method:]]></description>
+</item>
+</channel>
+</rss>

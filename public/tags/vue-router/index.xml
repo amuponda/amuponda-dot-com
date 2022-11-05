@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>vue-router - Tag - A. Muponda</title>
+        <link>https://amuponda.com/tags/vue-router/</link>
+        <description>vue-router - Tag - A. Muponda</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 28 Jan 2019 05:54:05 &#43;0000</lastBuildDate><atom:link href="https://amuponda.com/tags/vue-router/" rel="self" type="application/rss+xml" /><item>
+    <title>Handling 404 errors with Vue Router</title>
+    <link>https://amuponda.com/2019/01/28/handling-404-errors-with-vue-router/</link>
+    <pubDate>Mon, 28 Jan 2019 05:54:05 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2019/01/28/handling-404-errors-with-vue-router/</guid>
+    <description><![CDATA[Using the asterisk (*) in the Vue Router object definitions allows you to match anything, you just have to be careful and place them at the end of your routes array so that precise paths are matched first.
+Therefore, to handle 404 errors, all you will have to do is match the catch all path to your 404 error component. The Vue Router object would be defined like so:
+new Router({ routes: \[ { path: &#39;/blog-post/:id&#39; name: &#39;blogPost&#39;, component: BlogPost }, { // matches everything else	path: &#39;\*&#39;, name: &#39;notFound&#39; component: NotFound } \]	}) As you can see, it&rsquo;s dead simple.]]></description>
+</item>
+</channel>
+</rss>

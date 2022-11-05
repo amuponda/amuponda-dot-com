@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Shortcut for excluding null and empty strings in MariaDB - A. Muponda</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Shortcut for excluding null and empty strings in MariaDB" />
+<meta property="og:description" content="Up until now when given the table below and working with MariaDB:CREATE TABLE t1 (id BIGINT NOT NULL AUTO\_INCREMENT, email VARCHAR(255) NULL, PRIMARY KEY(id)); INSERT INTO t1 (email) VALUES (&#39;&#39;), (&#39; &#39;), (&#39;test@email.com&#39;), (NULL);I would use the following SELECT query in order to eliminate both empty strings and NULL values from the result set:SELECT email FROM t1 WHERE email &lt;&gt; &#39;&#39; AND email IS NOT NULL;However, this can be shortened to the more succinct:SELECT email FROM t1 WHERE email &gt; &#39;&#39;;To explain, empty strings of any length are equal:MariaDB \[(none)\]&gt; SELECT &#39;&#39; = &#39; &#39;; &#43;--------------&#43; | &#39;&#39; = &#39; &#39; | &#43;--------------&#43; | 1 | &#43;--------------&#43; 1 row in set (0." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://amuponda.com/2018/08/03/shortcut-for-excluding-null-and-empty-strings-in-mariadb/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-08-03T18:53:29+00:00" />
+<meta property="article:modified_time" content="2018-08-03T18:53:29+00:00" /><meta property="og:site_name" content="A. Muponda" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Shortcut for excluding null and empty strings in MariaDB"/>
+<meta name="twitter:description" content="Up until now when given the table below and working with MariaDB:CREATE TABLE t1 (id BIGINT NOT NULL AUTO\_INCREMENT, email VARCHAR(255) NULL, PRIMARY KEY(id)); INSERT INTO t1 (email) VALUES (&#39;&#39;), (&#39; &#39;), (&#39;test@email.com&#39;), (NULL);I would use the following SELECT query in order to eliminate both empty strings and NULL values from the result set:SELECT email FROM t1 WHERE email &lt;&gt; &#39;&#39; AND email IS NOT NULL;However, this can be shortened to the more succinct:SELECT email FROM t1 WHERE email &gt; &#39;&#39;;To explain, empty strings of any length are equal:MariaDB \[(none)\]&gt; SELECT &#39;&#39; = &#39; &#39;; &#43;--------------&#43; | &#39;&#39; = &#39; &#39; | &#43;--------------&#43; | 1 | &#43;--------------&#43; 1 row in set (0."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://amuponda.com/2018/08/03/shortcut-for-excluding-null-and-empty-strings-in-mariadb/" /><link rel="prev" href="https://amuponda.com/2018/07/15/searching-for-objects-in-large-datasets/" /><link rel="next" href="https://amuponda.com/2018/10/05/using-limit-with-group_concat-in-mariadb-10.3.3-/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Shortcut for excluding null and empty strings in MariaDB",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/amuponda.com\/2018\/08\/03\/shortcut-for-excluding-null-and-empty-strings-in-mariadb\/"
+        },"genre": "posts","keywords": "MariaDB, mariadb, sql-titbits","wordcount":  187 ,
+        "url": "https:\/\/amuponda.com\/2018\/08\/03\/shortcut-for-excluding-null-and-empty-strings-in-mariadb\/","datePublished": "2018-08-03T18:53:29+00:00","dateModified": "2018-08-03T18:53:29+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="A. Muponda">atm</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="A. Muponda">atm</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Shortcut for excluding null and empty strings in MariaDB</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2018-08-03">2018-08-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;187 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>Up until now when given the table below and working with MariaDB:<code>CREATE TABLE t1 (id BIGINT NOT NULL AUTO\_INCREMENT, email VARCHAR(255) NULL, PRIMARY KEY(id)); INSERT INTO t1 (email) VALUES (''), ('     '), ('test@email.com'), (NULL);</code>I would use the following <code>SELECT</code> query in order to eliminate both empty strings and <code>NULL</code> values from the result set:<code>SELECT email FROM t1 WHERE email &lt;&gt; '' AND email IS NOT NULL;</code>However, this can be shortened to the more succinct:<code>SELECT email FROM t1 WHERE email &gt; '';</code>To explain, empty strings of any length are equal:<code>MariaDB \[(none)\]&gt; SELECT '' = '     '; +--------------+ | '' = '     ' | +--------------+ |            1 | +--------------+ 1 row in set (0.00 sec)</code>So the expression in the <code>WHERE</code> clause would evaluate to false for all empty strings. Secondly, any comparison with <code>NULL</code> will return <code>NULL</code>.<code>MariaDB \[(none)\]&gt; SELECT NULL &gt; ''; +-----------+ | NULL &gt; '' | +-----------+ |      NULL | +-----------+ 1 row in set (0.00 sec)</code>For a row to be selected by the <code>WHERE</code> clause the expression should evaluate to true. Since <code>NULL</code> is not true the <code>NULL</code> values are also eliminated from the result set.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2018-08-03</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://amuponda.com/2018/08/03/shortcut-for-excluding-null-and-empty-strings-in-mariadb/" data-title="Shortcut for excluding null and empty strings in MariaDB" data-hashtags="MariaDB,mariadb,sql-titbits"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://amuponda.com/2018/08/03/shortcut-for-excluding-null-and-empty-strings-in-mariadb/" data-hashtag="MariaDB"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://amuponda.com/2018/08/03/shortcut-for-excluding-null-and-empty-strings-in-mariadb/" data-title="Shortcut for excluding null and empty strings in MariaDB"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://amuponda.com/2018/08/03/shortcut-for-excluding-null-and-empty-strings-in-mariadb/" data-title="Shortcut for excluding null and empty strings in MariaDB"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://amuponda.com/2018/08/03/shortcut-for-excluding-null-and-empty-strings-in-mariadb/" data-title="Shortcut for excluding null and empty strings in MariaDB"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/mariadb/">mariadb</a>,&nbsp;<a href="/tags/mariadb/">mariadb</a>,&nbsp;<a href="/tags/sql-titbits/">sql-titbits</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2018/07/15/searching-for-objects-in-large-datasets/" class="prev" rel="prev" title="Searching for objects in large datasets"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Searching for objects in large datasets</a>
+            <a href="/2018/10/05/using-limit-with-group_concat-in-mariadb-10.3.3-/" class="next" rel="next" title="Using LIMIT with GROUP_CONCAT  in MariaDB 10.3.3&#43;">Using LIMIT with GROUP_CONCAT  in MariaDB 10.3.3+<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

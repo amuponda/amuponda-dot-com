@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+	<meta name="generator" content="Hugo 0.105.0">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>A. Muponda</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="A. Muponda" />
+<meta property="og:description" content="This is my cool site" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://amuponda.com/" /><meta property="og:site_name" content="A. Muponda" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="A. Muponda"/>
+<meta name="twitter:description" content="This is my cool site"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://amuponda.com/" /><link rel="alternate" href="/index.xml" type="application/rss+xml" title="A. Muponda">
+    <link rel="feed" href="/index.xml" type="application/rss+xml" title="A. Muponda"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "url": "https:\/\/amuponda.com\/","inLanguage": "en-us","description": "This is my cool site","name": "A. Muponda"
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="A. Muponda">atm</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="A. Muponda">atm</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="page home" data-home="posts"><div class="home-profile"><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"></div></div>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2020/06/01/merging-openapi-schemas-in-micronaut/">Merging OpenAPI Schemas in Micronaut</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-06-01">2020-06-01</time></span></div><div class="content">Merging your own schemas into the generated OpenAPI specification is pretty straightforward. With OpenAPI integrated into your application, all you need to do is to add the system property micronaut.openapi.additional.files
+build.gradle
+tasks.withType(GroovyCompile) { ... groovyOptions.forkOptions.jvmArgs.add(&#34;-Dmicronaut.openapi.additional.files=${project.projectDir}/src/main/resources/swagger&#34;.toString()) ... } Specifying the location of the additional schema files. In this case I have it set to src/main/resources/swagger.
+It is worth noting what information is taken from additional files:
+Optional.ofNullable(from.getTags()).ifPresent(tags -&gt; tags.forEach(to::addTagsItem)); Optional.ofNullable(from.getServers()).ifPresent(servers -&gt; servers.</div><div class="post-footer">
+        <a href="/2020/06/01/merging-openapi-schemas-in-micronaut/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/micronaut/">micronaut</a>,&nbsp;<a href="/tags/micronaut/">micronaut</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2020/05/26/micronaut-application-reloading/">Micronaut application reloading</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-05-26">2020-05-26</time></span></div><div class="content">Since micronaut has a quick startup time the easiest way to reload an application after making changes is to have automatic restart setup. The first step in order to achieve this is to have this configuration in your application.yml
+micronaut: io: watch: paths: src/main restart: true On its own micronaut.io.watch.paths results in a FileChangedEvent being fired every time a file on the specified path(s) is changed. An event listener can be added if you want to do something on file changes.</div><div class="post-footer">
+        <a href="/2020/05/26/micronaut-application-reloading/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/gradle/">gradle</a>,&nbsp;<a href="/tags/gradle/">gradle</a>,&nbsp;<a href="/tags/micronaut/">micronaut</a>,&nbsp;<a href="/tags/micronaut/">micronaut</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2020/04/28/micronaut-i18n-using-messagesource/">Micronaut i18n using MessageSource</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-04-28">2020-04-28</time></span></div><div class="content">To implement i18n in micronaut you need to have a bean that is a subclass of ResourceBundleMessageSource. This can be done by using a factory to create the bean:
+@Factory class AppConfig { @Bean MessageSource messageSource() { new ResourceBundleMessageSource(&#39;com.example.Messages&#39;) } } Or just having a @Singleton annotated class
+@Singleton class AppBundle extends ResourceBundleMessageSource { AppBundle() { super(&#39;com.example.Messages&#39;) } } In both cases we pass the baseName of our bundle. After this you create your locale specific property files Messages.</div><div class="post-footer">
+        <a href="/2020/04/28/micronaut-i18n-using-messagesource/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/i18n/">i18n</a>,&nbsp;<a href="/tags/micronaut/">micronaut</a>,&nbsp;<a href="/tags/micronaut/">micronaut</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2020/02/24/micronaut-profile-based-configuration-properties/">Micronaut profile based configuration properties</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-02-24">2020-02-24</time></span></div><div class="content">Micronaut allows environment specific configuration in the same manner as Spring Boot. It searches for your application.yml, application.properties, application.json or application.groovy file. So for your production environment you could define application-prod.yml:
+micronaut: application: name: hello-service hello: message: This is prod The configuration properties can be accessed using the @Value annotation in controllers and services.
+@Value(&#39;${hello.message}&#39;) private String message When you run the jar you can specify the environment using the micronaut.</div><div class="post-footer">
+        <a href="/2020/02/24/micronaut-profile-based-configuration-properties/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/micronaut/">micronaut</a>,&nbsp;<a href="/tags/micronaut/">micronaut</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2020/02/08/micronaut-openapi-integration/">Micronaut OpenAPI integration</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-02-08">2020-02-08</time></span></div><div class="content">The Micronaut 1.2.10 documentation does an excellent job of explaining how to add OpenAPI integration to your app. However, I failed to generate the OpenAPI views when using swagger-groovy feature to generate my project:
+mn create-app micronaut-openapi-app --features swagger-groovy --lang=groovy
+After some digging around I found out you need to use a later version of the micronaut-openapi library to get things working.
+compileOnly &quot;io.micronaut.configuration:micronaut-openapi:1.3.4&quot;
+When using the swagger-groovy feature, the generated project ships with version 1.</div><div class="post-footer">
+        <a href="/2020/02/08/micronaut-openapi-integration/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/micronaut/">micronaut</a>,&nbsp;<a href="/tags/micronaut/">micronaut</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/2020/02/04/grails-3-datasource-config-with-hibernatespec/">Grails 3 datasource config with HibernateSpec</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-02-04">2020-02-04</time></span></div><div class="content">The default implementation of HibernateSpec in Grails 3.3.x overrides the datasource&rsquo;s dbCreate value with create-drop. To get around this you simply override the getConfiguration method and set your preferred value for dbCreate. The properties in the map returned by this method take precedence to those in your application.yml
+Map getConfiguration() { Collections.singletonMap(Settings.SETTING\_DB\_CREATE, &#34;create-drop&#34;) // change this } It is also worthwhile to note that your default datasource setup also take precedence over the test environment setup.</div><div class="post-footer">
+        <a href="/2020/02/04/grails-3-datasource-config-with-hibernatespec/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/grails/">Grails</a>,&nbsp;<a href="/tags/grails/">Grails</a>,&nbsp;<a href="/tags/hibernate/">Hibernate</a></div></div>
+</article><ul class="pagination"><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/">1</a>
+                    </span>
+                </li><li class="page-item active">
+                    <span class="page-link">
+                        <a href="/page/2/">2</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/3/">3</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/4/">4</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link" aria-hidden="true">&hellip;</span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/6/">6</a>
+                    </span>
+                </li></ul></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.6.0/dist/index.umd.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"data":{"id-1":"This is my cool site"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

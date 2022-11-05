@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Workaround for using the grails-schwartz-plugin in Grails 4 - A. Muponda</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Workaround for using the grails-schwartz-plugin in Grails 4" />
+<meta property="og:description" content="Version 1.0.1 of the grails-schwartz-plugin will not work with a grails 4 application as I recently found whilst trying to upgrade an app. You will get the following compilation error:
+CONFIGURE SUCCESSFUL in 1s Error | Failed to compile create-job.groovy: startup failed: create-job.groovy: 23: unable to resolve class grails.transaction.Transactional @ line 23, column 1. import grails.transaction.Transactional ^ 1 error (Use --stacktrace to see the full trace) Error | Command \[run-app\] error: null (Use --stacktrace to see the full trace) Process finished with exit code 1 The create-job." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://amuponda.com/2019/11/17/workaround-for-using-the-grails-schwartz-plugin-in-grails-4/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-11-17T04:40:13+00:00" />
+<meta property="article:modified_time" content="2019-11-17T04:40:13+00:00" /><meta property="og:site_name" content="A. Muponda" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Workaround for using the grails-schwartz-plugin in Grails 4"/>
+<meta name="twitter:description" content="Version 1.0.1 of the grails-schwartz-plugin will not work with a grails 4 application as I recently found whilst trying to upgrade an app. You will get the following compilation error:
+CONFIGURE SUCCESSFUL in 1s Error | Failed to compile create-job.groovy: startup failed: create-job.groovy: 23: unable to resolve class grails.transaction.Transactional @ line 23, column 1. import grails.transaction.Transactional ^ 1 error (Use --stacktrace to see the full trace) Error | Command \[run-app\] error: null (Use --stacktrace to see the full trace) Process finished with exit code 1 The create-job."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://amuponda.com/2019/11/17/workaround-for-using-the-grails-schwartz-plugin-in-grails-4/" /><link rel="prev" href="https://amuponda.com/2019/11/14/triggering-a-schwartz-job-to-run-immediately-in-grails/" /><link rel="next" href="https://amuponda.com/2019/12/28/handle-exceptions-in-micronaut-scheduled-tasks/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Workaround for using the grails-schwartz-plugin in Grails 4",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/amuponda.com\/2019\/11\/17\/workaround-for-using-the-grails-schwartz-plugin-in-grails-4\/"
+        },"genre": "posts","keywords": "Grails, Grails, quartz, schwartz-plugin","wordcount":  345 ,
+        "url": "https:\/\/amuponda.com\/2019\/11\/17\/workaround-for-using-the-grails-schwartz-plugin-in-grails-4\/","datePublished": "2019-11-17T04:40:13+00:00","dateModified": "2019-11-17T04:40:13+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="A. Muponda">atm</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="A. Muponda">atm</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Workaround for using the grails-schwartz-plugin in Grails 4</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2019-11-17">2019-11-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;345 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>Version 1.0.1 of the <a href="https://github.com/agileorbit/grails-schwartz/tree/master" target="_blank" rel="noopener noreffer ">grails-schwartz-plugin</a> will not work with a grails 4 application as I recently found whilst trying to upgrade an app. You will get the following compilation error:</p>
+<pre tabindex="0"><code>CONFIGURE SUCCESSFUL in 1s
+Error |
+Failed to compile create-job.groovy: startup failed:
+create-job.groovy: 23: unable to resolve class grails.transaction.Transactional
+ @ line 23, column 1.
+   import grails.transaction.Transactional
+   ^
+
+1 error
+ (Use --stacktrace to see the full trace)
+Error |
+Command \[run-app\] error: null (Use --stacktrace to see the full trace)
+
+Process finished with exit code 1
+</code></pre><p>The <code>create-job.groovy</code> file used by the create-job command imports the now defunct <code>@Transactional</code> AST transform which has now been moved to GORM.</p>
+<p>I did some digging and found that there is a release candidate for version 2 fo the plugin(2.0.0.RC1). Using that instead gets rid of the compilation error but introduces a runtime error because the <code>quartzScheduler</code> bean can&rsquo;t be created, a <code>BeanCreationException</code> is thrown. Digging deeper I realised that the <code>SchwartzSchedulerFactoryBean</code> class in the plugin uses a property from <code>StdSchedulerFactory</code> that is no longer available in the version of quartz schedular library that is being used.</p>
+<p>This is because the version specified in the plugin&rsquo;s dependencies:</p>
+<pre tabindex="0"><code>String quartzVersion = &#39;2.2.3&#39;
+compile &#39;org.quartz-scheduler:quartz:&#39; + quartzVersion, {
+  exclude module: &#39;c3p0&#39;
+}
+compile &#39;org.quartz-scheduler:quartz-jobs:&#39; + quartzVersion
+</code></pre><p>Is overridden as shown by the gradle build scan I generated</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://www.amuponda.com/wp-content/uploads/2019/11/Screen-Shot-2019-11-17-at-2.04.07-pm.png"
+        data-srcset="https://www.amuponda.com/wp-content/uploads/2019/11/Screen-Shot-2019-11-17-at-2.04.07-pm.png, https://www.amuponda.com/wp-content/uploads/2019/11/Screen-Shot-2019-11-17-at-2.04.07-pm.png 1.5x, https://www.amuponda.com/wp-content/uploads/2019/11/Screen-Shot-2019-11-17-at-2.04.07-pm.png 2x"
+        data-sizes="auto"
+        alt="https://www.amuponda.com/wp-content/uploads/2019/11/Screen-Shot-2019-11-17-at-2.04.07-pm.png"
+        title="https://www.amuponda.com/wp-content/uploads/2019/11/Screen-Shot-2019-11-17-at-2.04.07-pm.png" /></p>
+<p>schedular version is upgraded to 2.3.1</p>
+<p>So as a hack you could enforce the required version by having it as a dependency in your own project&rsquo;s <code>build.gradle</code> file. So the plugin dependency can be added like so:</p>
+<pre tabindex="0"><code>compile &#39;com.agileorbit:schwartz:2.0.0.RC1&#39;
+// force version 2.2.3 of quartz
+String quartzVersion = &#39;2.2.3&#39;
+compile &#39;org.quartz-scheduler:quartz:&#39; + quartzVersion, {
+    exclude module: &#39;c3p0&#39;
+}
+compile &#39;org.quartz-scheduler:quartz-jobs:&#39; + quartzVersion
+</code></pre><p>This is just a quick and dirty way to get things running again after an upgrade to grails 4. The new grails guide on scheduling now uses the native <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/integration.html#scheduling" target="_blank" rel="noopener noreffer ">Spring Task Execution and Scheduling</a> via <code>@Scheduled</code> so you would be better of reimplementing your scheduled tasks to use that.</p>
+<p>As always, you can find an example of how to do this on <a href="https://github.com/amuponda/blog-posts/tree/master/grails4-schwartz" target="_blank" rel="noopener noreffer ">github</a>.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2019-11-17</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://amuponda.com/2019/11/17/workaround-for-using-the-grails-schwartz-plugin-in-grails-4/" data-title="Workaround for using the grails-schwartz-plugin in Grails 4" data-hashtags="Grails,Grails,quartz,schwartz-plugin"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://amuponda.com/2019/11/17/workaround-for-using-the-grails-schwartz-plugin-in-grails-4/" data-hashtag="Grails"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://amuponda.com/2019/11/17/workaround-for-using-the-grails-schwartz-plugin-in-grails-4/" data-title="Workaround for using the grails-schwartz-plugin in Grails 4"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://amuponda.com/2019/11/17/workaround-for-using-the-grails-schwartz-plugin-in-grails-4/" data-title="Workaround for using the grails-schwartz-plugin in Grails 4"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://amuponda.com/2019/11/17/workaround-for-using-the-grails-schwartz-plugin-in-grails-4/" data-title="Workaround for using the grails-schwartz-plugin in Grails 4"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/grails/">Grails</a>,&nbsp;<a href="/tags/grails/">Grails</a>,&nbsp;<a href="/tags/quartz/">quartz</a>,&nbsp;<a href="/tags/schwartz-plugin/">schwartz-plugin</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2019/11/14/triggering-a-schwartz-job-to-run-immediately-in-grails/" class="prev" rel="prev" title="Triggering a schwartz job to run immediately in grails"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Triggering a schwartz job to run immediately in grails</a>
+            <a href="/2019/12/28/handle-exceptions-in-micronaut-scheduled-tasks/" class="next" rel="next" title="Handle exceptions in micronaut scheduled tasks">Handle exceptions in micronaut scheduled tasks<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

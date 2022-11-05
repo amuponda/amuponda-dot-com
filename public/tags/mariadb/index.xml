@@ -1,0 +1,24 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>mariadb - Tag - A. Muponda</title>
+        <link>https://amuponda.com/tags/mariadb/</link>
+        <description>mariadb - Tag - A. Muponda</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 05 Oct 2018 17:17:28 &#43;0000</lastBuildDate><atom:link href="https://amuponda.com/tags/mariadb/" rel="self" type="application/rss+xml" /><item>
+    <title>Using LIMIT with GROUP_CONCAT  in MariaDB 10.3.3&#43;</title>
+    <link>https://amuponda.com/2018/10/05/using-limit-with-group_concat-in-mariadb-10.3.3-/</link>
+    <pubDate>Fri, 05 Oct 2018 17:17:28 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2018/10/05/using-limit-with-group_concat-in-mariadb-10.3.3-/</guid>
+    <description><![CDATA[Prior to version 10.3.3 of MariaDB it was not possible to use LIMIT in a GROUP_CONCAT query. So in cases you wanted to select the first n elements of a GROUP_CONCAT query you had to make use of SUBSTRING_INDEX.``` CREATE TABLE t1 (id BIGINT NOT NULL AUTO_INCREMENT, email VARCHAR(255), PRIMARY KEY(id)); INSERT INTO t1 (email) VALUES (&rsquo;email&rsquo;), (&rsquo;test2@email.com&rsquo;), (&rsquo;test1@email.com&rsquo;);
+To select the first element you would execute the following query: SELECT SUBSTRING_INDEX(GROUP_CONCAT(email SEPARATOR &lsquo;::&rsquo;), &lsquo;::&rsquo;, n) FROM t1;]]></description>
+</item>
+<item>
+    <title>Shortcut for excluding null and empty strings in MariaDB</title>
+    <link>https://amuponda.com/2018/08/03/shortcut-for-excluding-null-and-empty-strings-in-mariadb/</link>
+    <pubDate>Fri, 03 Aug 2018 18:53:29 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2018/08/03/shortcut-for-excluding-null-and-empty-strings-in-mariadb/</guid>
+    <description><![CDATA[Up until now when given the table below and working with MariaDB:CREATE TABLE t1 (id BIGINT NOT NULL AUTO\_INCREMENT, email VARCHAR(255) NULL, PRIMARY KEY(id)); INSERT INTO t1 (email) VALUES (''), (' '), ('test@email.com'), (NULL);I would use the following SELECT query in order to eliminate both empty strings and NULL values from the result set:SELECT email FROM t1 WHERE email &lt;&gt; '' AND email IS NOT NULL;However, this can be shortened to the more succinct:SELECT email FROM t1 WHERE email &gt; '';To explain, empty strings of any length are equal:MariaDB \[(none)\]&gt; SELECT '' = ' '; +--------------+ | '' = ' ' | +--------------+ | 1 | +--------------+ 1 row in set (0.]]></description>
+</item>
+</channel>
+</rss>

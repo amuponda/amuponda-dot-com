@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Using SQL Changelogs with the Micronaut Liquibase library - A. Muponda</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Using SQL Changelogs with the Micronaut Liquibase library" />
+<meta property="og:description" content="1. Introduction Micronaut provides an integration with Liquibase to make it easy to manage database schema changes. This tutorial will show you can write your changelog files using SQL instead of XML. To begin you need to add the micronaut-liquibase dependency to your build.gradle file.
+implementation(&#34;io.micronaut.liquibase:micronaut-liquibase&#34;) 2. Configuration Set the schema-generation configuration for your datasource to NONE so that Micronaut Data does not attempt to generate the schema for you after the liquibase changelogs have been run." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://amuponda.com/2022/01/31/using-sql-changelogs-with-the-micronaut-liquibase-library/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-31T08:36:06+00:00" />
+<meta property="article:modified_time" content="2022-01-31T08:36:06+00:00" /><meta property="og:site_name" content="A. Muponda" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Using SQL Changelogs with the Micronaut Liquibase library"/>
+<meta name="twitter:description" content="1. Introduction Micronaut provides an integration with Liquibase to make it easy to manage database schema changes. This tutorial will show you can write your changelog files using SQL instead of XML. To begin you need to add the micronaut-liquibase dependency to your build.gradle file.
+implementation(&#34;io.micronaut.liquibase:micronaut-liquibase&#34;) 2. Configuration Set the schema-generation configuration for your datasource to NONE so that Micronaut Data does not attempt to generate the schema for you after the liquibase changelogs have been run."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://amuponda.com/2022/01/31/using-sql-changelogs-with-the-micronaut-liquibase-library/" /><link rel="prev" href="https://amuponda.com/2021/11/20/configuring-http-to-https-redirects-on-aws-classic-load-balancer/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Using SQL Changelogs with the Micronaut Liquibase library",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/amuponda.com\/2022\/01\/31\/using-sql-changelogs-with-the-micronaut-liquibase-library\/"
+        },"genre": "posts","keywords": "Micronaut, micronaut","wordcount":  272 ,
+        "url": "https:\/\/amuponda.com\/2022\/01\/31\/using-sql-changelogs-with-the-micronaut-liquibase-library\/","datePublished": "2022-01-31T08:36:06+00:00","dateModified": "2022-01-31T08:36:06+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="A. Muponda">atm</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="A. Muponda">atm</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Using SQL Changelogs with the Micronaut Liquibase library</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-01-31">2022-01-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;272 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-introduction">1. Introduction</a></li>
+    <li><a href="#2-configuration">2. Configuration</a></li>
+    <li><a href="#3-changelog-files">3. Changelog files</a></li>
+    <li><a href="#4-run-the-application">4. Run the application</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="1-introduction">1. Introduction</h2>
+<p>Micronaut provides an integration with Liquibase to make it easy to manage database schema changes. This tutorial will show you can write your changelog files using SQL instead of XML. To begin you need to add the <code>micronaut-liquibase</code> dependency to your <code>build.gradle</code> file.</p>
+<pre tabindex="0"><code>implementation(&#34;io.micronaut.liquibase:micronaut-liquibase&#34;)
+</code></pre><h2 id="2-configuration">2. Configuration</h2>
+<p>Set the <code>schema-generation</code> configuration for your datasource to <code>NONE</code> so that Micronaut Data does not attempt to generate the schema for you after the liquibase changelogs have been run. We are using MariaDB in this project.</p>
+<p>src/main/resources/application.yml</p>
+<pre tabindex="0"><code>datasources:
+  default:
+    url: jdbc:mariadb://localhost:3306/mn-liquibase
+    driverClassName: org.mariadb.jdbc.Driver
+    username: sa
+    password: &#39;&#39;
+    schema-generate: NONE
+    dialect: MYSQL
+</code></pre><p>Define you liquibase configuration specifying the location of your changelog file on the classpath. In our case it is located in <code>src/main/resources/db/changelog.xml</code></p>
+<p>src/main/resources/application.yml</p>
+<pre tabindex="0"><code>liquibase:
+    datasources: 
+        default: 
+            change-log: &#39;classpath:db/liquibase-changelog.xml&#39;
+</code></pre><h2 id="3-changelog-files">3. Changelog files</h2>
+<p>src/main/resources/db/changelog.xml</p>
+<pre tabindex="0"><code>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;
+
+&lt;databaseChangeLog
+  xmlns=&#34;http://www.liquibase.org/xml/ns/dbchangelog&#34;
+  xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;
+  xsi:schemaLocation=&#34;http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd&#34;&gt;
+  &lt;include file=&#34;changelog/CreateUserTable.sql&#34; relativeToChangelogFile=&#34;true&#34;/&gt;
+&lt;/databaseChangeLog&gt;
+</code></pre><p>Our example root changelog file above has one entry that points to the <code>CreateUserTable.sql</code> changelog file.</p>
+<p>src/main/resources/db/changelog/CreateUserTable.sql</p>
+<pre tabindex="0"><code>\-- liquibase formatted sql
+-- changeset alfred:CreateUserTable
+CREATE TABLE \`user\` (
+    \`id\` bigint(20) NOT NULL AUTO\_INCREMENT,
+    \`email\` varchar(255) NOT NULL,
+    \`first\_name\` varchar(255) NOT NULL,
+    \`last\_name\` varchar(255) NOT NULL,
+    \`password\` varchar(255) NOT NULL,
+    PRIMARY KEY (\`id\`),
+    UNIQUE KEY (\`email\`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+</code></pre><p>The SQL changelog file must follow <a href="https://docs.liquibase.com/concepts/basic/sql-format.html?Highlight=sql" target="_blank" rel="noopener noreffer ">liquibase format rules</a> and begin with the comment below</p>
+<pre tabindex="0"><code>\-- liquibase formatted sql
+</code></pre><p>And each changeset in the file must begin with comment in the following format</p>
+<pre tabindex="0"><code>\--changeset author:id attribute1:value1 attribute2:value2 \[...\]
+</code></pre><h2 id="4-run-the-application">4. Run the application</h2>
+<p>That&rsquo;s it, with everything in place the <code>CreateUserTable</code> changelog should be executed when the application starts up.</p>
+<p>You can find an example project using Micronaut 3.3.0 on <a href="https://github.com/amuponda/blog-posts/tree/master/micronaut-liquibase" title="github" target="_blank" rel="noopener noreffer ">github</a>.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-01-31</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://amuponda.com/2022/01/31/using-sql-changelogs-with-the-micronaut-liquibase-library/" data-title="Using SQL Changelogs with the Micronaut Liquibase library" data-hashtags="Micronaut,micronaut"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://amuponda.com/2022/01/31/using-sql-changelogs-with-the-micronaut-liquibase-library/" data-hashtag="Micronaut"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://amuponda.com/2022/01/31/using-sql-changelogs-with-the-micronaut-liquibase-library/" data-title="Using SQL Changelogs with the Micronaut Liquibase library"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://amuponda.com/2022/01/31/using-sql-changelogs-with-the-micronaut-liquibase-library/" data-title="Using SQL Changelogs with the Micronaut Liquibase library"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://amuponda.com/2022/01/31/using-sql-changelogs-with-the-micronaut-liquibase-library/" data-title="Using SQL Changelogs with the Micronaut Liquibase library"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/micronaut/">micronaut</a>,&nbsp;<a href="/tags/micronaut/">micronaut</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2021/11/20/configuring-http-to-https-redirects-on-aws-classic-load-balancer/" class="prev" rel="prev" title="Configuring HTTP to HTTPS redirects on AWS classic load balancer"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Configuring HTTP to HTTPS redirects on AWS classic load balancer</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

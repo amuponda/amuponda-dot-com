@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>dev-tools - Tag - A. Muponda</title>
+        <link>https://amuponda.com/tags/dev-tools/</link>
+        <description>dev-tools - Tag - A. Muponda</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 23 Oct 2019 16:15:05 &#43;0000</lastBuildDate><atom:link href="https://amuponda.com/tags/dev-tools/" rel="self" type="application/rss+xml" /><item>
+    <title>Wiring up Spring Boot DevTools</title>
+    <link>https://amuponda.com/2019/10/23/wiring-up-spring-boot-devtools/</link>
+    <pubDate>Wed, 23 Oct 2019 16:15:05 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2019/10/23/wiring-up-spring-boot-devtools/</guid>
+    <description><![CDATA[The spring-boot-dev-tools module allows you to automatically restart your application whenever you make changes. It works by detecting changes to files on the classpath. To add devtools to a project just add the dependency to your build.gradle as shown below:
+configurations { developmentOnly runtimeClasspath { extendsFrom developmentOnly } } dependencies { developmentOnly(&#34;org.springframework.boot:spring-boot-devtools&#34;) } If you are using Intellij IDE you can trigger a restart by building the project. When working with an IDE that continually compiles changes you can use a trigger file and restarts will only occur when that file changes.]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Groovy - Tag - A. Muponda</title>
+        <link>https://amuponda.com/tags/groovy/</link>
+        <description>Groovy - Tag - A. Muponda</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 15 Jul 2018 18:14:59 &#43;0000</lastBuildDate><atom:link href="https://amuponda.com/tags/groovy/" rel="self" type="application/rss+xml" /><item>
+    <title>Searching for objects in large datasets</title>
+    <link>https://amuponda.com/2018/07/15/searching-for-objects-in-large-datasets/</link>
+    <pubDate>Sun, 15 Jul 2018 18:14:59 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2018/07/15/searching-for-objects-in-large-datasets/</guid>
+    <description><![CDATA[Groovy provides a number of useful methods for working with Lists. One that use all the time for searching for objects in a list is the find method. Looking under the hood you will find that is uses a linear search via the classic for loop to find the matching object. [java] public static T find(T[] self, @ClosureParams(FirstParam.Component.class) Closure condition) { BooleanClosureWrapper bcw = new BooleanClosureWrapper(condition); for (T element : self) { if (bcw.]]></description>
+</item>
+</channel>
+</rss>

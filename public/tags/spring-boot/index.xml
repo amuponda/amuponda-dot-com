@@ -1,0 +1,35 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Spring Boot - Tag - A. Muponda</title>
+        <link>https://amuponda.com/tags/spring-boot/</link>
+        <description>Spring Boot - Tag - A. Muponda</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 23 Oct 2019 16:15:05 &#43;0000</lastBuildDate><atom:link href="https://amuponda.com/tags/spring-boot/" rel="self" type="application/rss+xml" /><item>
+    <title>Wiring up Spring Boot DevTools</title>
+    <link>https://amuponda.com/2019/10/23/wiring-up-spring-boot-devtools/</link>
+    <pubDate>Wed, 23 Oct 2019 16:15:05 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2019/10/23/wiring-up-spring-boot-devtools/</guid>
+    <description><![CDATA[The spring-boot-dev-tools module allows you to automatically restart your application whenever you make changes. It works by detecting changes to files on the classpath. To add devtools to a project just add the dependency to your build.gradle as shown below:
+configurations { developmentOnly runtimeClasspath { extendsFrom developmentOnly } } dependencies { developmentOnly(&#34;org.springframework.boot:spring-boot-devtools&#34;) } If you are using Intellij IDE you can trigger a restart by building the project. When working with an IDE that continually compiles changes you can use a trigger file and restarts will only occur when that file changes.]]></description>
+</item>
+<item>
+    <title>Adding Spring Boot Admin to a Grails application</title>
+    <link>https://amuponda.com/2018/11/29/adding-spring-boot-admin-to-a-grails-application/</link>
+    <pubDate>Thu, 29 Nov 2018 17:19:55 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2018/11/29/adding-spring-boot-admin-to-a-grails-application/</guid>
+    <description><![CDATA[In this blog post, the first part of the Spring Boot Admin series, I will illustrate how to use Spring Boot Admin to monitor and manage a Grails application.
+1. Setting up the Spring Boot Admin Server The getting started guide clearly explains how to setup an admin server. This basically involves creating a simple Spring Boot app and adding the SBA server dependency:implementation('de.codecentric:spring-boot-admin-starter-server:1.5.7')Since grails in built on top of spring boot 1.]]></description>
+</item>
+<item>
+    <title>Working with multiple datasources and NamedParameterJdbcTemplate in Spring Boot 2.0.5</title>
+    <link>https://amuponda.com/2018/10/21/working-with-multiple-datasources-and-namedparameterjdbctemplate-in-spring-boot-2.0.5/</link>
+    <pubDate>Sun, 21 Oct 2018 06:50:29 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2018/10/21/working-with-multiple-datasources-and-namedparameterjdbctemplate-in-spring-boot-2.0.5/</guid>
+    <description><![CDATA[In this post I will illustrate how to use NamedParameterJdbcTemplate with multiple datasources in a Spring Boot 2.0.5 application. It expands on the spring guide available here.
+1. Define the datasource properties Add datasource properties to application.properties for each datasource to be configured.``` #db1 datasource db1.datasource.jdbc-url=jdbc:mariadb://localhost/datasources_db1 db1.datasource.username=root db1.datasource.password=
+#db2 datasource db2.datasource.jdbc-url=jdbc:mariadb://localhost/datasources_db2 db2.datasource.username=root db2.datasource.password= ```Note that with Hikari on the classpath we need to replace the url property with jdbc-url as Hikari does not have a url property.]]></description>
+</item>
+</channel>
+</rss>

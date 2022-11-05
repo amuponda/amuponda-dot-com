@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>AWS - Tag - A. Muponda</title>
+        <link>https://amuponda.com/tags/aws/</link>
+        <description>AWS - Tag - A. Muponda</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 20 Nov 2021 06:18:16 &#43;0000</lastBuildDate><atom:link href="https://amuponda.com/tags/aws/" rel="self" type="application/rss+xml" /><item>
+    <title>Configuring HTTP to HTTPS redirects on AWS classic load balancer</title>
+    <link>https://amuponda.com/2021/11/20/configuring-http-to-https-redirects-on-aws-classic-load-balancer/</link>
+    <pubDate>Sat, 20 Nov 2021 06:18:16 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2021/11/20/configuring-http-to-https-redirects-on-aws-classic-load-balancer/</guid>
+    <description><![CDATA[If you have a Micronaut application deployed on AWS Elastic Beanstalk in an environment with a classic load balancer it is a straightforward process to redirect your HTTP traffic to HTTPS.
+Create a file named ./platform/nginx/conf.d/elasticbeanstalk/00_application.conf in the build file you upload to Elastic Beanstalk.
+location / { set $redirect 0; if ($http\_x\_forwarded\_proto != &#34;https&#34;) { set $redirect 1; } if ($http\_user\_agent ~\* &#34;ELB-HealthChecker&#34;) { set $redirect 0; } if ($redirect = 1) { return 301 https://$host$request\_uri; } proxy\_pass http://127.]]></description>
+</item>
+</channel>
+</rss>

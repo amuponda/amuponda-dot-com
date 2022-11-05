@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>i18n - Tag - A. Muponda</title>
+        <link>https://amuponda.com/tags/i18n/</link>
+        <description>i18n - Tag - A. Muponda</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 28 Apr 2020 19:46:29 &#43;0000</lastBuildDate><atom:link href="https://amuponda.com/tags/i18n/" rel="self" type="application/rss+xml" /><item>
+    <title>Micronaut i18n using MessageSource</title>
+    <link>https://amuponda.com/2020/04/28/micronaut-i18n-using-messagesource/</link>
+    <pubDate>Tue, 28 Apr 2020 19:46:29 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2020/04/28/micronaut-i18n-using-messagesource/</guid>
+    <description><![CDATA[To implement i18n in micronaut you need to have a bean that is a subclass of ResourceBundleMessageSource. This can be done by using a factory to create the bean:
+@Factory class AppConfig { @Bean MessageSource messageSource() { new ResourceBundleMessageSource(&#39;com.example.Messages&#39;) } } Or just having a @Singleton annotated class
+@Singleton class AppBundle extends ResourceBundleMessageSource { AppBundle() { super(&#39;com.example.Messages&#39;) } } In both cases we pass the baseName of our bundle. After this you create your locale specific property files Messages.]]></description>
+</item>
+</channel>
+</rss>

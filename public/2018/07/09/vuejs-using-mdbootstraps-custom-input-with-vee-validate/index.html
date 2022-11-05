@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Vuejs using MDBootstrap&#39;s custom input with Vee-validate - A. Muponda</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Vuejs using MDBootstrap&#39;s custom input with Vee-validate" />
+<meta property="og:description" content="The vee-validate directive is used as follows: [html] {{ errors.first(&rsquo;email) }} [/html] Essentially, vee-validate creates an array of validation errors via the ErrorBag wrapper class and you can access that array in your template and javascript. MDBoostrap provides a custom input component, and according to the docs , for it to work with v-model, the inside the component should:
+Bind the value attribute to a value prop - (check) you can pass in a value prop On input, emit its own custom input event with the new value - (check) it has a custom event called &lsquo;input&rsquo; fired whenever the @change and @input events occur on the nested input tag So combining the two you can change the html to this: [html] &lt;md-input v-validate=&quot;&lsquo;required|email&rsquo;&quot; name=&ldquo;email&rdquo; label=&ldquo;Email&rdquo; icon=&ldquo;envelope&rdquo; :value=&ldquo;email&rdquo; @input=&ldquo;email = $event&rdquo; /&gt; {{ errors." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://amuponda.com/2018/07/09/vuejs-using-mdbootstraps-custom-input-with-vee-validate/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-07-09T18:59:50+00:00" />
+<meta property="article:modified_time" content="2018-07-09T18:59:50+00:00" /><meta property="og:site_name" content="A. Muponda" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vuejs using MDBootstrap&#39;s custom input with Vee-validate"/>
+<meta name="twitter:description" content="The vee-validate directive is used as follows: [html] {{ errors.first(&rsquo;email) }} [/html] Essentially, vee-validate creates an array of validation errors via the ErrorBag wrapper class and you can access that array in your template and javascript. MDBoostrap provides a custom input component, and according to the docs , for it to work with v-model, the inside the component should:
+Bind the value attribute to a value prop - (check) you can pass in a value prop On input, emit its own custom input event with the new value - (check) it has a custom event called &lsquo;input&rsquo; fired whenever the @change and @input events occur on the nested input tag So combining the two you can change the html to this: [html] &lt;md-input v-validate=&quot;&lsquo;required|email&rsquo;&quot; name=&ldquo;email&rdquo; label=&ldquo;Email&rdquo; icon=&ldquo;envelope&rdquo; :value=&ldquo;email&rdquo; @input=&ldquo;email = $event&rdquo; /&gt; {{ errors."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://amuponda.com/2018/07/09/vuejs-using-mdbootstraps-custom-input-with-vee-validate/" /><link rel="prev" href="https://amuponda.com/2018/06/29/grails-spring-security-rest-custom-authentication-failure-response/" /><link rel="next" href="https://amuponda.com/2018/07/15/searching-for-objects-in-large-datasets/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Vuejs using MDBootstrap's custom input with Vee-validate",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/amuponda.com\/2018\/07\/09\/vuejs-using-mdbootstraps-custom-input-with-vee-validate\/"
+        },"genre": "posts","keywords": "mdbootstrap, vee-validate, Vue.js, vuejs","wordcount":  227 ,
+        "url": "https:\/\/amuponda.com\/2018\/07\/09\/vuejs-using-mdbootstraps-custom-input-with-vee-validate\/","datePublished": "2018-07-09T18:59:50+00:00","dateModified": "2018-07-09T18:59:50+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="A. Muponda">atm</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="A. Muponda">atm</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Vuejs using MDBootstrap's custom input with Vee-validate</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2018-07-09">2018-07-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;227 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>The <a href="https://baianat.github.io/vee-validate/guide/getting-started.html#installation" target="_blank" rel="noopener noreffer ">vee-validate</a>  directive is used as follows: [html] <!-- raw HTML omitted --> <!-- raw HTML omitted --> <!-- raw HTML omitted -->{{ errors.first(&rsquo;email) }}<!-- raw HTML omitted --> <!-- raw HTML omitted --> [/html] Essentially, vee-validate creates an array of validation errors via the <a href="https://baianat.github.io/vee-validate/api/errorbag.html#api" target="_blank" rel="noopener noreffer ">ErrorBag</a> wrapper class and you can access that array in your template and javascript. MDBoostrap provides a custom input component, and according to the <a href="https://vuejs.org/v2/guide/components.html#Using-v-model-on-Components" target="_blank" rel="noopener noreffer ">docs</a> , for it to work with v-model, the <!-- raw HTML omitted --> inside the component should:</p>
+<ul>
+<li>Bind the <code>value</code> attribute to a <code>value</code> prop - (check) <em>you can pass in a value prop</em></li>
+<li>On <code>input</code>, emit its own custom <code>input</code> event with the new value - (check) <em>it has a custom event called &lsquo;input&rsquo; fired whenever the @change and @input events occur on the nested input tag</em></li>
+</ul>
+<p>So combining the two you can change the html to this: [html] &lt;md-input v-validate=&quot;&lsquo;required|email&rsquo;&quot; name=&ldquo;email&rdquo; label=&ldquo;Email&rdquo; icon=&ldquo;envelope&rdquo; :value=&ldquo;email&rdquo; @input=&ldquo;email = $event&rdquo; /&gt; <!-- raw HTML omitted --> <!-- raw HTML omitted -->{{ errors.first(&rsquo;email&rsquo;) }}<!-- raw HTML omitted --> <!-- raw HTML omitted --> [/html] The md-input component has<code>value</code>, <code>errorMsg</code>and<code>successMsg</code> props which I assumed could be used to display validation errors but at close inspection this is not the case. In the current version (v1.0.0), the props are not used in any meaningful way. So the best you can do to pass the validation error message to the component is by making use of the slot element. So the final result would be: [html] &lt;md-input v-validate=&quot;&rsquo; required|email&rsquo;&quot; name=&ldquo;email&rdquo; label=&ldquo;Email&rdquo; icon=&ldquo;envelope&rdquo; :value=&ldquo;email&rdquo; @input=&ldquo;email = $event&rdquo;&gt; <!-- raw HTML omitted --> <!-- raw HTML omitted -->{{ errors.first(&rsquo;email&rsquo;) }}<!-- raw HTML omitted --> <!-- raw HTML omitted --> <!-- raw HTML omitted --> [/html] You can  checkout the example code on  <a href="https://github.com/amuponda/blog-posts/tree/master/mdbbootstrap-vee-validate" target="_blank" rel="noopener noreffer ">github.</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2018-07-09</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://amuponda.com/2018/07/09/vuejs-using-mdbootstraps-custom-input-with-vee-validate/" data-title="Vuejs using MDBootstrap&#39;s custom input with Vee-validate" data-hashtags="mdbootstrap,vee-validate,Vue.js,vuejs"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://amuponda.com/2018/07/09/vuejs-using-mdbootstraps-custom-input-with-vee-validate/" data-hashtag="mdbootstrap"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://amuponda.com/2018/07/09/vuejs-using-mdbootstraps-custom-input-with-vee-validate/" data-title="Vuejs using MDBootstrap&#39;s custom input with Vee-validate"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://amuponda.com/2018/07/09/vuejs-using-mdbootstraps-custom-input-with-vee-validate/" data-title="Vuejs using MDBootstrap&#39;s custom input with Vee-validate"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://amuponda.com/2018/07/09/vuejs-using-mdbootstraps-custom-input-with-vee-validate/" data-title="Vuejs using MDBootstrap&#39;s custom input with Vee-validate"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/mdbootstrap/">mdbootstrap</a>,&nbsp;<a href="/tags/vee-validate/">vee-validate</a>,&nbsp;<a href="/tags/vue.js/">Vue.js</a>,&nbsp;<a href="/tags/vuejs/">vuejs</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2018/06/29/grails-spring-security-rest-custom-authentication-failure-response/" class="prev" rel="prev" title="Grails Spring Security Rest Custom Authentication Failure Response"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Grails Spring Security Rest Custom Authentication Failure Response</a>
+            <a href="/2018/07/15/searching-for-objects-in-large-datasets/" class="next" rel="next" title="Searching for objects in large datasets">Searching for objects in large datasets<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

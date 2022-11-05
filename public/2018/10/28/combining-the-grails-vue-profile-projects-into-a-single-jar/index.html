@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Combining the Grails Vue profile projects into a single jar - A. Muponda</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Combining the Grails Vue profile projects into a single jar" />
+<meta property="og:description" content="When working with the Vue profile in grails it creates a multi-project build with server and client projects. Grails offers documentation on how to combine the two into a single deployable jar. You create a top level build.gradle file with a task to copy the contents of the client build folder into the server resources folder.
+However, since Webpack bundles your client app into the dist folder, the tutorial will not work as it is." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://amuponda.com/2018/10/28/combining-the-grails-vue-profile-projects-into-a-single-jar/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-10-28T04:24:41+00:00" />
+<meta property="article:modified_time" content="2018-10-28T04:24:41+00:00" /><meta property="og:site_name" content="A. Muponda" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Combining the Grails Vue profile projects into a single jar"/>
+<meta name="twitter:description" content="When working with the Vue profile in grails it creates a multi-project build with server and client projects. Grails offers documentation on how to combine the two into a single deployable jar. You create a top level build.gradle file with a task to copy the contents of the client build folder into the server resources folder.
+However, since Webpack bundles your client app into the dist folder, the tutorial will not work as it is."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://amuponda.com/2018/10/28/combining-the-grails-vue-profile-projects-into-a-single-jar/" /><link rel="prev" href="https://amuponda.com/2018/10/21/working-with-multiple-datasources-and-namedparameterjdbctemplate-in-spring-boot-2.0.5/" /><link rel="next" href="https://amuponda.com/2018/11/06/deploying-a-grails-vue-app-to-heroku-using-gradle/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Combining the Grails Vue profile projects into a single jar",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/amuponda.com\/2018\/10\/28\/combining-the-grails-vue-profile-projects-into-a-single-jar\/"
+        },"genre": "posts","keywords": "Grails, Grails, Vue.js, vuejs","wordcount":  246 ,
+        "url": "https:\/\/amuponda.com\/2018\/10\/28\/combining-the-grails-vue-profile-projects-into-a-single-jar\/","datePublished": "2018-10-28T04:24:41+00:00","dateModified": "2018-10-28T04:24:41+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="A. Muponda">atm</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="A. Muponda">atm</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Combining the Grails Vue profile projects into a single jar</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2018-10-28">2018-10-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;246 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#update-for-grails-4">Update for Grails 4</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>When working with the Vue profile in grails it creates a multi-project build with server and client projects. Grails offers <a href="http://guides.grails.org/react-combined/guide/index.html" target="_blank" rel="noopener noreffer ">documentation</a> on how to combine the two into a single deployable jar. You create a top level <code>build.gradle</code> file with a task to copy the contents of the client build folder into the server resources folder.</p>
+<p>However, since Webpack bundles your client app into the <code>dist</code> folder, the tutorial will not work as it is. You will need to copy this <code>dist</code> folder over to the server project as well. This results in this modified <code>copyClientResources</code> task:</p>
+<pre tabindex="0"><code>task copyClientResources(dependsOn: &#39;:client:build&#39;) { 
+    group = &#39;build&#39;
+    description = &#39;Copy client resources into server&#39;
+    doLast {
+        copy {
+            from &#34;${project(&#39;:client&#39;).projectDir}/dist/&#34;
+            into &#34;${project(&#39;:server&#39;).buildDir}/resources/main/public&#34;
+        }
+        copy {
+            from project(&#39;:client&#39;).buildDir.absolutePath
+            into &#34;${project(&#39;:server&#39;).buildDir}/resources/main/public&#34;
+        }
+    }
+}
+</code></pre><h3 id="update-for-grails-4">Update for Grails 4</h3>
+<p>With Grails 4, the Vue profile will now use vue-cli 3 and this comes with some changes. The URL that the Vue app uses for REST requests will now be set using <a href="https://cli.vuejs.org/guide/mode-and-env.html#environment-variables" target="_blank" rel="noopener noreffer ">environment variables</a>. So previously were you would set the the <code>SERVER_URL</code> to the root context in <code>client/config/prod.env.js</code> like so:</p>
+<pre tabindex="0"><code>&#39;use strict&#39;
+module.exports = {
+  NODE\_ENV: &#39;&#34;production&#34;&#39;,
+  SERVER\_URL: &#39;&#34;&#34;&#39;
+}
+</code></pre><p>You now need to set it in <code>client/.env.production</code> like so:</p>
+<pre tabindex="0"><code>VUE\_APP\_SERVER\_URL=&#34;&#34;
+</code></pre><p>Also syntax changes in Gradle 5 mean that this line in the root project&rsquo;s <code>build.gradle</code>:</p>
+<pre tabindex="0"><code>task(&#34;:server:assemble&#34;).mustRunAfter(copyClientResources)
+</code></pre><p>Will now need to change to something like this:</p>
+<pre tabindex="0"><code>project(&#34;:server&#34;).getTasksByName(&#39;assemble&#39;, true)\[0\].mustRunAfter(copyClientResources) 
+</code></pre><p>You can have a look at this example project on <a href="https://github.com/amuponda/blog-posts/tree/master/assemble-grails-vue-app" target="_blank" rel="noopener noreffer ">github</a> that illustrates this.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2018-10-28</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://amuponda.com/2018/10/28/combining-the-grails-vue-profile-projects-into-a-single-jar/" data-title="Combining the Grails Vue profile projects into a single jar" data-hashtags="Grails,Grails,Vue.js,vuejs"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://amuponda.com/2018/10/28/combining-the-grails-vue-profile-projects-into-a-single-jar/" data-hashtag="Grails"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://amuponda.com/2018/10/28/combining-the-grails-vue-profile-projects-into-a-single-jar/" data-title="Combining the Grails Vue profile projects into a single jar"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://amuponda.com/2018/10/28/combining-the-grails-vue-profile-projects-into-a-single-jar/" data-title="Combining the Grails Vue profile projects into a single jar"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://amuponda.com/2018/10/28/combining-the-grails-vue-profile-projects-into-a-single-jar/" data-title="Combining the Grails Vue profile projects into a single jar"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/grails/">Grails</a>,&nbsp;<a href="/tags/grails/">Grails</a>,&nbsp;<a href="/tags/vue.js/">Vue.js</a>,&nbsp;<a href="/tags/vuejs/">vuejs</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2018/10/21/working-with-multiple-datasources-and-namedparameterjdbctemplate-in-spring-boot-2.0.5/" class="prev" rel="prev" title="Working with multiple datasources and NamedParameterJdbcTemplate in Spring Boot 2.0.5"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Working with multiple datasources and NamedParameterJdbcTemplate in Spring Boot 2.0.5</a>
+            <a href="/2018/11/06/deploying-a-grails-vue-app-to-heroku-using-gradle/" class="next" rel="next" title="Deploying a grails vue app to heroku using gradle">Deploying a grails vue app to heroku using gradle<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.105.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

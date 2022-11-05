@@ -1,0 +1,97 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Grails - Tag - A. Muponda</title>
+        <link>https://amuponda.com/tags/grails/</link>
+        <description>Grails - Tag - A. Muponda</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 04 Feb 2020 17:58:35 &#43;0000</lastBuildDate><atom:link href="https://amuponda.com/tags/grails/" rel="self" type="application/rss+xml" /><item>
+    <title>Grails 3 datasource config with HibernateSpec</title>
+    <link>https://amuponda.com/2020/02/04/grails-3-datasource-config-with-hibernatespec/</link>
+    <pubDate>Tue, 04 Feb 2020 17:58:35 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2020/02/04/grails-3-datasource-config-with-hibernatespec/</guid>
+    <description><![CDATA[The default implementation of HibernateSpec in Grails 3.3.x overrides the datasource&rsquo;s dbCreate value with create-drop. To get around this you simply override the getConfiguration method and set your preferred value for dbCreate. The properties in the map returned by this method take precedence to those in your application.yml
+Map getConfiguration() { Collections.singletonMap(Settings.SETTING\_DB\_CREATE, &#34;create-drop&#34;) // change this } It is also worthwhile to note that your default datasource setup also take precedence over the test environment setup.]]></description>
+</item>
+<item>
+    <title>Workaround for using the grails-schwartz-plugin in Grails 4</title>
+    <link>https://amuponda.com/2019/11/17/workaround-for-using-the-grails-schwartz-plugin-in-grails-4/</link>
+    <pubDate>Sun, 17 Nov 2019 04:40:13 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2019/11/17/workaround-for-using-the-grails-schwartz-plugin-in-grails-4/</guid>
+    <description><![CDATA[Version 1.0.1 of the grails-schwartz-plugin will not work with a grails 4 application as I recently found whilst trying to upgrade an app. You will get the following compilation error:
+CONFIGURE SUCCESSFUL in 1s Error | Failed to compile create-job.groovy: startup failed: create-job.groovy: 23: unable to resolve class grails.transaction.Transactional @ line 23, column 1. import grails.transaction.Transactional ^ 1 error (Use --stacktrace to see the full trace) Error | Command \[run-app\] error: null (Use --stacktrace to see the full trace) Process finished with exit code 1 The create-job.]]></description>
+</item>
+<item>
+    <title>Triggering a schwartz job to run immediately in grails</title>
+    <link>https://amuponda.com/2019/11/14/triggering-a-schwartz-job-to-run-immediately-in-grails/</link>
+    <pubDate>Thu, 14 Nov 2019 08:10:42 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2019/11/14/triggering-a-schwartz-job-to-run-immediately-in-grails/</guid>
+    <description><![CDATA[The grails schwartz plugin comes with a utility service, the QuartzService, which you can use to trigger a job immediately.
+For example, if you want to run a job on application startup, you can just call the services&rsquo; triggerJob method from the init closure in Bootstrap.groovy
+package schwartz.grails.plugin class BootStrap { def quartzService def helloWorldJobService def init = { servletContext -&gt; quartzService.triggerJob(helloWorldJobService.jobKey) } def destroy = { } } The triggerJob method takes a JobKey as a parameter.]]></description>
+</item>
+<item>
+    <title>The grails database migration plugin</title>
+    <link>https://amuponda.com/2019/04/22/the-grails-database-migration-plugin/</link>
+    <pubDate>Mon, 22 Apr 2019 17:12:51 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2019/04/22/the-grails-database-migration-plugin/</guid>
+    <description><![CDATA[Grails has a comprehensive guide on how to use the database-migration plugin for your greenfield Grails projects. The guide however does not explain clearly how to go about this with an existing app. This blog post details how to setup it up in that scenario.
+The first thing is to set your datasource dbCreate property to none in the application.yml:
+dataSource: dbCreate: none And install the plugin as mentioned in the guide.]]></description>
+</item>
+<item>
+    <title>Adding a JAR to a Grails project</title>
+    <link>https://amuponda.com/2019/04/08/adding-a-jar-to-a-grails-project/</link>
+    <pubDate>Mon, 08 Apr 2019 17:06:30 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2019/04/08/adding-a-jar-to-a-grails-project/</guid>
+    <description><![CDATA[When you find yourself working with an old Grails 2 project and you need to experiment with changes to one of its the dependencies without having to publish a snapshot version to an artifact repo, you can always drop the .jar into the lib folder and you are good to go. If you do not have a .pom file associated with the jar, attempting to use the local maven repo (.]]></description>
+</item>
+<item>
+    <title>Logging SQL statements in Grails 3</title>
+    <link>https://amuponda.com/2019/02/21/logging-sql-statements-in-grails-3/</link>
+    <pubDate>Thu, 21 Feb 2019 18:36:08 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2019/02/21/logging-sql-statements-in-grails-3/</guid>
+    <description><![CDATA[You can enable logging of the SQL queries that Hibernate executes via the logSql property of your datasource config in either application.yml or application.groovy. Setting logSql to true enables logging to stdout. You will see output similar to the one below:
+Hibernate: create table book\_chapter\_page\_count (book\_id bigint not null, chapter\_page\_count\_integer integer) ENGINE=InnoDB Hibernate: alter table book\_chapter\_page\_count add constraint FK87brho4gbq6gbns18fnschhsx foreign key (book\_id) references book (id) The logged SQL can be formatted by setting formatSql to true.]]></description>
+</item>
+<item>
+    <title>Configuring HikariCP in a Grails 3.3.X Application</title>
+    <link>https://amuponda.com/2018/12/10/configuring-hikaricp-in-a-grails-3.3.x-application/</link>
+    <pubDate>Mon, 10 Dec 2018 06:13:22 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2018/12/10/configuring-hikaricp-in-a-grails-3.3.x-application/</guid>
+    <description><![CDATA[This post will show how to use a HikariCP JDBC connection pool in a Grails 3 application. By default, GORM for Hibernate uses a Tomcat JDBC connection pool when you bootstrap your app using grails&rsquo; create-app command. Switching to HikariCP is simple. Remove the Tomcat JDBC dependency in build.gradle```` runtime &quot;org.apache.tomcat:tomcat-jdbc&quot; ```And replace it with the HikariCP dependency as follows:``` runtime &quot;com.zaxxer:HikariCP:3.2.0&quot; ```Just like Tomcat JDBC, HikariCP config properties can be set in application.]]></description>
+</item>
+<item>
+    <title>Adding Spring Boot Admin to a Grails application</title>
+    <link>https://amuponda.com/2018/11/29/adding-spring-boot-admin-to-a-grails-application/</link>
+    <pubDate>Thu, 29 Nov 2018 17:19:55 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2018/11/29/adding-spring-boot-admin-to-a-grails-application/</guid>
+    <description><![CDATA[In this blog post, the first part of the Spring Boot Admin series, I will illustrate how to use Spring Boot Admin to monitor and manage a Grails application.
+1. Setting up the Spring Boot Admin Server The getting started guide clearly explains how to setup an admin server. This basically involves creating a simple Spring Boot app and adding the SBA server dependency:implementation('de.codecentric:spring-boot-admin-starter-server:1.5.7')Since grails in built on top of spring boot 1.]]></description>
+</item>
+<item>
+    <title>Deploying a grails vue app to heroku using gradle</title>
+    <link>https://amuponda.com/2018/11/06/deploying-a-grails-vue-app-to-heroku-using-gradle/</link>
+    <pubDate>Tue, 06 Nov 2018 15:52:39 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2018/11/06/deploying-a-grails-vue-app-to-heroku-using-gradle/</guid>
+    <description><![CDATA[Continuing from my previous post on combining the server and client projects of a grails vue profile app into a single executable jar file, you can make use of the heroku-gradle plugin to deploy the resulting jar to Heroku. The tutorial here can help get started with deploying gradle projects to Heroku. Prior to using the plugin you would need to take the following steps to deploy.
+Define your Procfile with the command to execute the web app``` web: java -Dserver.]]></description>
+</item>
+<item>
+    <title>Combining the Grails Vue profile projects into a single jar</title>
+    <link>https://amuponda.com/2018/10/28/combining-the-grails-vue-profile-projects-into-a-single-jar/</link>
+    <pubDate>Sun, 28 Oct 2018 04:24:41 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2018/10/28/combining-the-grails-vue-profile-projects-into-a-single-jar/</guid>
+    <description><![CDATA[When working with the Vue profile in grails it creates a multi-project build with server and client projects. Grails offers documentation on how to combine the two into a single deployable jar. You create a top level build.gradle file with a task to copy the contents of the client build folder into the server resources folder.
+However, since Webpack bundles your client app into the dist folder, the tutorial will not work as it is.]]></description>
+</item>
+</channel>
+</rss>

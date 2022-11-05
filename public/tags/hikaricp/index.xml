@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>HikariCP - Tag - A. Muponda</title>
+        <link>https://amuponda.com/tags/hikaricp/</link>
+        <description>HikariCP - Tag - A. Muponda</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 10 Dec 2018 06:13:22 &#43;0000</lastBuildDate><atom:link href="https://amuponda.com/tags/hikaricp/" rel="self" type="application/rss+xml" /><item>
+    <title>Configuring HikariCP in a Grails 3.3.X Application</title>
+    <link>https://amuponda.com/2018/12/10/configuring-hikaricp-in-a-grails-3.3.x-application/</link>
+    <pubDate>Mon, 10 Dec 2018 06:13:22 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2018/12/10/configuring-hikaricp-in-a-grails-3.3.x-application/</guid>
+    <description><![CDATA[This post will show how to use a HikariCP JDBC connection pool in a Grails 3 application. By default, GORM for Hibernate uses a Tomcat JDBC connection pool when you bootstrap your app using grails&rsquo; create-app command. Switching to HikariCP is simple. Remove the Tomcat JDBC dependency in build.gradle```` runtime &quot;org.apache.tomcat:tomcat-jdbc&quot; ```And replace it with the HikariCP dependency as follows:``` runtime &quot;com.zaxxer:HikariCP:3.2.0&quot; ```Just like Tomcat JDBC, HikariCP config properties can be set in application.]]></description>
+</item>
+</channel>
+</rss>

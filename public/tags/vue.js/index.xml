@@ -1,0 +1,103 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Vue.js - Tag - A. Muponda</title>
+        <link>https://amuponda.com/tags/vue.js/</link>
+        <description>Vue.js - Tag - A. Muponda</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 05 Dec 2020 06:48:44 &#43;0000</lastBuildDate><atom:link href="https://amuponda.com/tags/vue.js/" rel="self" type="application/rss+xml" /><item>
+    <title>How to bootstrap a Micronaut Vue SPA</title>
+    <link>https://amuponda.com/2020/12/05/how-to-bootstrap-a-micronaut-vue-spa/</link>
+    <pubDate>Sat, 05 Dec 2020 06:48:44 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2020/12/05/how-to-bootstrap-a-micronaut-vue-spa/</guid>
+    <description><![CDATA[Bootstrapping a Micronaut Vue Single Page Application is straightforward and similar to the approach you would take if doing with React. The result is a gradle multi project build consisting of a client and server subprojects.
+1. Create client project In the client folder create a new Vue project using the vue-cli. Add the following build.gradle file.
+plugins { id &#34;com.github.node-gradle.node&#34; version &#34;2.2.4&#34; } node { version = &#39;10.13.0&#39; // https://nodejs.]]></description>
+</item>
+<item>
+    <title>Handling 404 errors with Vue Router</title>
+    <link>https://amuponda.com/2019/01/28/handling-404-errors-with-vue-router/</link>
+    <pubDate>Mon, 28 Jan 2019 05:54:05 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2019/01/28/handling-404-errors-with-vue-router/</guid>
+    <description><![CDATA[Using the asterisk (*) in the Vue Router object definitions allows you to match anything, you just have to be careful and place them at the end of your routes array so that precise paths are matched first.
+Therefore, to handle 404 errors, all you will have to do is match the catch all path to your 404 error component. The Vue Router object would be defined like so:
+new Router({ routes: \[ { path: &#39;/blog-post/:id&#39; name: &#39;blogPost&#39;, component: BlogPost }, { // matches everything else	path: &#39;\*&#39;, name: &#39;notFound&#39; component: NotFound } \]	}) As you can see, it&rsquo;s dead simple.]]></description>
+</item>
+<item>
+    <title>VeeValidate pretty field names error messages in</title>
+    <link>https://amuponda.com/2019/01/15/veevalidate-pretty-field-names-error-messages-in/</link>
+    <pubDate>Tue, 15 Jan 2019 15:55:56 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2019/01/15/veevalidate-pretty-field-names-error-messages-in/</guid>
+    <description><![CDATA[By default VeeValidate uses the name or data-vv-name attributes of the input element for the field in error messages. For the field below:
+&lt;input name=&#34;startDate&#34; v-validate=&#34;&#39;required&#39;&#34; type=&#34;text&#34;/&gt; &lt;span&gt;{{ errors.first(&#39;startDate&#39;) }}&lt;/span&gt; The error message when the start date is not specified would be: The startDate field is required, which is not exactly user friendly.
+Step forward the data-vv-as attribute. As the docs put it, it specifies a pretty name for the field.]]></description>
+</item>
+<item>
+    <title>Communicate between Vue.js instances</title>
+    <link>https://amuponda.com/2019/01/02/communicate-between-vue.js-instances/</link>
+    <pubDate>Wed, 02 Jan 2019 16:54:04 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2019/01/02/communicate-between-vue.js-instances/</guid>
+    <description><![CDATA[To communicate between two Vue instances you need to create an event hub/event bus. Since Vue instances implement an event emitter interface this can easily be achieved by declaring an empty Vue instance:
+let eventHub = new Vue() You can then $emit events from the first instance as follows:
+let appOne = new Vue({ methods: { onClick () { eventHub.$emit(&#39;button-clicked&#39;) } } }) And use the created hook in the other app to listen for the event:]]></description>
+</item>
+<item>
+    <title>Enabling inferred rules in VeeValidate 2.1.4</title>
+    <link>https://amuponda.com/2018/12/23/enabling-inferred-rules-in-veevalidate-2.1.4/</link>
+    <pubDate>Sun, 23 Dec 2018 16:33:49 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2018/12/23/enabling-inferred-rules-in-veevalidate-2.1.4/</guid>
+    <description><![CDATA[If upgrading to VeeValidate 2.1.4 you will find that any of your form validation making use of inferred rules will be broken. This is because the functionality is now disabled by default.
+To enable it again, you will need to set the validity flag to true when you install the plugin. This is shown below:
+Vue.use(VeeValidate, { validity: true }); Fortunately, as you can see there is not much needed to get inferred rules working again.]]></description>
+</item>
+<item>
+    <title>Making a field conditionally required with VeeValidate</title>
+    <link>https://amuponda.com/2018/12/16/making-a-field-conditionally-required-with-veevalidate/</link>
+    <pubDate>Sun, 16 Dec 2018 16:36:46 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2018/12/16/making-a-field-conditionally-required-with-veevalidate/</guid>
+    <description><![CDATA[There are instances when you are using VeeValidate for form validation and you want a field to be required only if a certain condition is met. This blog post will illustrate how to achieve that in two different ways.
+1. Using a computed property You can make use of a computed properties to return a dynamic validation expression.&lt;input name=&quot;email&quot; v-validate=&quot;rules&quot; /&gt;For the input element above the computed property rules would look something like this:computed: { rules () { let rulesExp = &quot;email&quot; return rulesExp += this.]]></description>
+</item>
+<item>
+    <title>Working with objects as select options in Vue.js</title>
+    <link>https://amuponda.com/2018/12/12/working-with-objects-as-select-options-in-vue.js/</link>
+    <pubDate>Wed, 12 Dec 2018 23:57:26 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2018/12/12/working-with-objects-as-select-options-in-vue.js/</guid>
+    <description><![CDATA[Using objects as select options in Vue.js is straightforward. Together with the v-for directive you create the options as follows:
+&lt;select v-model=&#34;selected&#34;&gt; &lt;option v-for=&#34;acc in accounts&#34; :key=&#34;acc.id&#34; :value=&#34;acc&#34;&gt;{{acc.name}}&lt;/option&gt; &lt;/select&gt; Binding the value attribute to the object itself and the option&rsquo;s text to a key in the object. You can use VeeValidate on select as well:
+&lt;select v-model=&#34;selected&#34; required v-validate&gt;&lt;/select&gt; Adding a noSelection option A default (noSelection) option can be added by having an option bound to null in the option list.]]></description>
+</item>
+<item>
+    <title>Deploying a grails vue app to heroku using gradle</title>
+    <link>https://amuponda.com/2018/11/06/deploying-a-grails-vue-app-to-heroku-using-gradle/</link>
+    <pubDate>Tue, 06 Nov 2018 15:52:39 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2018/11/06/deploying-a-grails-vue-app-to-heroku-using-gradle/</guid>
+    <description><![CDATA[Continuing from my previous post on combining the server and client projects of a grails vue profile app into a single executable jar file, you can make use of the heroku-gradle plugin to deploy the resulting jar to Heroku. The tutorial here can help get started with deploying gradle projects to Heroku. Prior to using the plugin you would need to take the following steps to deploy.
+Define your Procfile with the command to execute the web app``` web: java -Dserver.]]></description>
+</item>
+<item>
+    <title>Combining the Grails Vue profile projects into a single jar</title>
+    <link>https://amuponda.com/2018/10/28/combining-the-grails-vue-profile-projects-into-a-single-jar/</link>
+    <pubDate>Sun, 28 Oct 2018 04:24:41 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2018/10/28/combining-the-grails-vue-profile-projects-into-a-single-jar/</guid>
+    <description><![CDATA[When working with the Vue profile in grails it creates a multi-project build with server and client projects. Grails offers documentation on how to combine the two into a single deployable jar. You create a top level build.gradle file with a task to copy the contents of the client build folder into the server resources folder.
+However, since Webpack bundles your client app into the dist folder, the tutorial will not work as it is.]]></description>
+</item>
+<item>
+    <title>Vuejs using MDBootstrap&#39;s custom input with Vee-validate</title>
+    <link>https://amuponda.com/2018/07/09/vuejs-using-mdbootstraps-custom-input-with-vee-validate/</link>
+    <pubDate>Mon, 09 Jul 2018 18:59:50 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://amuponda.com/2018/07/09/vuejs-using-mdbootstraps-custom-input-with-vee-validate/</guid>
+    <description><![CDATA[The vee-validate directive is used as follows: [html] {{ errors.first(&rsquo;email) }} [/html] Essentially, vee-validate creates an array of validation errors via the ErrorBag wrapper class and you can access that array in your template and javascript. MDBoostrap provides a custom input component, and according to the docs , for it to work with v-model, the inside the component should:
+Bind the value attribute to a value prop - (check) you can pass in a value prop On input, emit its own custom input event with the new value - (check) it has a custom event called &lsquo;input&rsquo; fired whenever the @change and @input events occur on the nested input tag So combining the two you can change the html to this: [html] &lt;md-input v-validate=&quot;&lsquo;required|email&rsquo;&quot; name=&ldquo;email&rdquo; label=&ldquo;Email&rdquo; icon=&ldquo;envelope&rdquo; :value=&ldquo;email&rdquo; @input=&ldquo;email = $event&rdquo; /&gt; {{ errors.]]></description>
+</item>
+</channel>
+</rss>
