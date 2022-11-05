@@ -1,0 +1,11 @@
+baseURL = "https://amuponda.com/"
+languageCode = "en-us"
+title = "A. Muponda"
+theme = "LoveIt"
+[params]
+  title = "A. Muponda"
+  [params.header]
+    [params.header.title]
+      name = "atm"
+[permalinks]
+    posts = '/:year/:month/:day/:title/'
