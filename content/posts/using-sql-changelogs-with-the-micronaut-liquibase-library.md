@@ -65,34 +65,34 @@ Our example root changelog file above has one entry that points to the `CreateUs
 src/main/resources/db/changelog/CreateUserTable.sql
 
 ```
-\-- liquibase formatted sql
+-- liquibase formatted sql
 -- changeset alfred:CreateUserTable
-CREATE TABLE \`user\` (
-    \`id\` bigint(20) NOT NULL AUTO\_INCREMENT,
-    \`email\` varchar(255) NOT NULL,
-    \`first\_name\` varchar(255) NOT NULL,
-    \`last\_name\` varchar(255) NOT NULL,
-    \`password\` varchar(255) NOT NULL,
-    PRIMARY KEY (\`id\`),
-    UNIQUE KEY (\`email\`)
+CREATE TABLE `user` (
+    `id` bigint(20) NOT NULL AUTO_INCREMENT,
+    `email` varchar(255) NOT NULL,
+    `first_name` varchar(255) NOT NULL,
+    `last_name` varchar(255) NOT NULL,
+    `password` varchar(255) NOT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ```
 
 The SQL changelog file must follow [liquibase format rules](https://docs.liquibase.com/concepts/basic/sql-format.html?Highlight=sql) and begin with the comment below
 
 ```
-\-- liquibase formatted sql
+-- liquibase formatted sql
 ```
 
 And each changeset in the file must begin with comment in the following format
 
 ```
-\--changeset author:id attribute1:value1 attribute2:value2 \[...\]
+--changeset author:id attribute1:value1 attribute2:value2 [...]
 ```
 
 4\. Run the application
 -----------------------
 
-That's it, with everything in place the `CreateUserTable` changelog should be executed when the application starts up.
+That's it, with everything in place the `CreateUserTable.sql` changelog should be executed when the application starts up.
 
 You can find an example project using Micronaut 3.3.0 on [github](https://github.com/amuponda/blog-posts/tree/master/micronaut-liquibase "github").

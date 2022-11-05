@@ -9,7 +9,6 @@ When you find yourself working with an old Grails 2 project and you need to expe
 
 ```
 Resolve error obtaining dependencies: Failed to read artifact descriptor for com.amuponda:foo:jar:1.0.0-SNAPSHOT (Use --stacktrace to see the full trace)
-Error |
 ```
 
 With Grails 3 the `lib` directory was deprecated so the above approach will not work. You explicitly need to tell gradle to use it to resolve dependencies:
@@ -17,7 +16,7 @@ With Grails 3 the `lib` directory was deprecated so the above approach will not 
 ```
 dependencies {
     ...
-    compile fileTree(dir: './lib', include: \['\*.jar'\])
+    compile fileTree(dir: './lib', include: ['*.jar'])
     ...
 }
 ```
