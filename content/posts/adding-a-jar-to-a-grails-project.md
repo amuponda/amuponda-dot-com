@@ -5,7 +5,7 @@ draft: false
 tags: ['Grails']
 ---
 
-When you find yourself working with an old Grails 2 project and you need to experiment with changes to one of its the dependencies without having to publish a snapshot version to an artifact repo, you can always drop the `.jar` into the `lib` folder and you are good to go. If you do not have a `.pom` file associated with the `jar`, attempting to use the local maven repo (`.m2` folder) would result in the error below:
+When you find yourself working with an old Grails 2 project and you need to experiment with changes to one of it's the dependencies without having to publish a snapshot version to an artifact repo, you can always drop the `.jar` into the `lib` folder and you are good to go. If you do not have a `.pom` file associated with the `jar`, attempting to use the local maven repo (`.m2` folder) would result in the error below:
 
 ```
 Resolve error obtaining dependencies: Failed to read artifact descriptor for com.amuponda:foo:jar:1.0.0-SNAPSHOT (Use --stacktrace to see the full trace)

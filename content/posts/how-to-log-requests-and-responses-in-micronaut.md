@@ -2,7 +2,7 @@
 title: 'How to log requests and responses in micronaut'
 date: Sun, 18 Oct 2020 20:25:10 +0000
 draft: false
-tags: ['Micronaut']
+tags: ['Micronaut', 'Logbook']
 ---
 
 Micronaut allows you to customize the Netty pipeline by using a bean event listener. You can therefore add custom channel handlers to the pipeline. Using this knowledge together with [Logbook](https://github.com/zalando/logbook) library you can easily log a request and the corresponding response.
@@ -11,15 +11,20 @@ Micronaut allows you to customize the Netty pipeline by using a bean event liste
 ----------------------------
 
 Add the Logbook dependencies `logbook-core` and `logbook-netty` to your `build.gradle`.
-
-`implementation("org.zalando:logbook-core:2.3.0") implementation("org.zalando:logbook-netty:2.3.0")`
+{{< admonition note "build.gradle" >}}
+```
+implementation("org.zalando:logbook-core:2.3.0") 
+implementation("org.zalando:logbook-netty:2.3.0")
+```
+{{< /admonition>}}
 
 2\. Add the Logbook bean
 ------------------------
 
-Create a bean of type `Logbook` via an `@Factory` annotated config class to be used by the pipeline customizer.
+Create a bean of type `Logbook` via a `@Factory` annotated configuration class to be used by the pipeline customizer.
 
-```
+{{< admonition note "src/main/groovy/mn/zalando/logbook/BeanFactory.groovy" >}}
+```groovy
 package mn.zalando.logbook
 
 import io.micronaut.context.annotation.Factory
@@ -35,13 +40,13 @@ class BeanFactory {
         Logbook.create()
     }
 }
-
 ```
+{{< /admonition>}}
 
 3\. Create the ChannelPipelineCustomizer
 ----------------------------------------
-
-```
+{{< admonition note "src/main/groovy/mn/zalando/logbook/LogbookPipelineCustomizer.groovy" >}}
+```groovy
 package mn.zalando.logbook
 
 import io.micronaut.context.annotation.Requires
@@ -71,7 +76,7 @@ class LogbookPipelineCustomizer implements BeanCreatedEventListener<ChannelPipel
         if (customizer.isServerChannel()) {
             customizer.doOnConnect({ ChannelPipeline pipeline ->
                 pipeline.addAfter(
-                        ChannelPipelineCustomizer.HANDLER\_HTTP\_SERVER\_CODEC,
+                        ChannelPipelineCustomizer.HANDLER_HTTP_SERVER_CODEC,
                         "logbook",
                         new LogbookServerHandler(logbook)
                 )
@@ -80,7 +85,7 @@ class LogbookPipelineCustomizer implements BeanCreatedEventListener<ChannelPipel
         } else {
             customizer.doOnConnect({ ChannelPipeline pipeline ->
                 pipeline.addAfter(
-                        ChannelPipelineCustomizer.HANDLER\_HTTP\_SERVER\_CODEC,
+                        ChannelPipelineCustomizer.HANDLER_HTTP_SERVER_CODEC,
                         "logbook",
                         new LogbookClientHandler(logbook))
                 return pipeline
@@ -89,27 +94,32 @@ class LogbookPipelineCustomizer implements BeanCreatedEventListener<ChannelPipel
         return customizer
     }
 }
-
 ```
+{{< /admonition>}}
 
 The class above implements the `BeanCreatedEventListener` interface enabling you to listen for the creation of the `ChannelPipelineCustomizer` bean. With `ChannelPipelineCustomizer` at hand you can add custom channel handlers to the pipeline whenever a new channel is established. In this case we add `LogbookServerHandler` from the `Logbook` library which takes care of the logging.
 
 If clients are sending requests with the `Accept-Encoding` header, then for the server you might want to add the logbook handler after the compression handler `HANDLER_HTTP_COMPRESSOR` instead of `HANDLER_HTTP_SERVER_CODEC`. This ensures that the logging of the response happens before the data is compressed.
 
-```
+{{< admonition note "src/main/groovy/mn/zalando/logbook/LogbookPipelineCustomizer.groovy" >}}
+```groovy
 if (customizer.isServerChannel()) { 
  	customizer.doOnConnect({ ChannelPipeline pipeline -> 
- 		pipeline.addAfter( ChannelPipelineCustomizer.HANDLER\_HTTP\_COMPRESSOR, "logbook", new LogbookServerHandler(logbook) ) 
+ 		pipeline.addAfter( ChannelPipelineCustomizer.HANDLER_HTTP_COMPRESSOR, "logbook", new LogbookServerHandler(logbook) ) 
  		return pipeline 
  	}) 
 }
 ```
+{{< /admonition >}}
+
 
 4\. Set Logbook log level
 -------------------------
 
 The logbook logger needs to be configured to trace level in order to log the requests and responses.
-
-`logger name="org.zalando.logbook" level="TRACE"/>`
-
+{{< admonition note "src/main/resources/logback.xml" >}}
+```xml
+<logger name="org.zalando.logbook" level="TRACE"/>
+```
+{{< /admonition >}}
 A working example using Micronaut 2.1.1 can be found on [github](https://github.com/amuponda/blog-posts/tree/master/mn-zalando-logbook "https://github.com/amuponda/blog-posts/tree/master/mn-zalando-logbook").

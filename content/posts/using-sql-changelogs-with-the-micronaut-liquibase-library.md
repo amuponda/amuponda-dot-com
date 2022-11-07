@@ -2,26 +2,25 @@
 title: 'Using SQL Changelogs with the Micronaut Liquibase library'
 date: Mon, 31 Jan 2022 08:36:06 +0000
 draft: false
-tags: ['Micronaut', 'micronaut']
+tags: ['Micronaut']
 ---
 
 1\. Introduction
 ----------------
 
-Micronaut provides an integration with Liquibase to make it easy to manage database schema changes. This tutorial will show you can write your changelog files using SQL instead of XML. To begin you need to add the `micronaut-liquibase` dependency to your `build.gradle` file.
-
+Micronaut provides an integration with Liquibase to make it easy to manage database schema changes. This tutorial will show you can write your changelog files using SQL instead of XML. To begin, you need to add the `micronaut-liquibase` dependency to your `build.gradle` file.
+{{< admonition note "build.gradle" >}}
 ```
 implementation("io.micronaut.liquibase:micronaut-liquibase")
 ```
+{{< /admonition >}}
 
 2\. Configuration
 -----------------
 
 Set the `schema-generation` configuration for your datasource to `NONE` so that Micronaut Data does not attempt to generate the schema for you after the liquibase changelogs have been run. We are using MariaDB in this project.
-
-src/main/resources/application.yml
-
-```
+{{< admonition note "application.yml" >}}
+```yaml
 datasources:
   default:
     url: jdbc:mariadb://localhost:3306/mn-liquibase
@@ -31,24 +30,24 @@ datasources:
     schema-generate: NONE
     dialect: MYSQL
 ```
+{{< /admonition >}}
 
 Define you liquibase configuration specifying the location of your changelog file on the classpath. In our case it is located in `src/main/resources/db/changelog.xml`
 
-src/main/resources/application.yml
-
-```
+{{< admonition note "application.yml" >}}
+```yaml {hl_lines=[4]}
 liquibase:
     datasources: 
         default: 
-            change-log: 'classpath:db/liquibase-changelog.xml'
+            change-log: 'classpath:db/changelog.xml'
 ```
+{{< /admonition >}}
 
 3\. Changelog files
 -------------------
 
-src/main/resources/db/changelog.xml
-
-```
+{{< admonition note "src/main/resources/db/changelog.xml" >}}
+```xml {hl_lines=[8]}
 <?xml version="1.0" encoding="UTF-8"?>
 
 <databaseChangeLog
@@ -59,12 +58,12 @@ src/main/resources/db/changelog.xml
   <include file="changelog/CreateUserTable.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>
 ```
+{{< /admonition >}}
 
-Our example root changelog file above has one entry that points to the `CreateUserTable.sql` changelog file.
+Our example root changelog file above has one entry that points to the `CreateUserTable.sql` changelog sql.
 
-src/main/resources/db/changelog/CreateUserTable.sql
-
-```
+{{< admonition note "src/main/resources/db/changelog/CreateUserTable.sql" >}}
+```sql
 -- liquibase formatted sql
 -- changeset alfred:CreateUserTable
 CREATE TABLE `user` (
@@ -77,18 +76,22 @@ CREATE TABLE `user` (
     UNIQUE KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ```
-
+{{< /admonition >}}
 The SQL changelog file must follow [liquibase format rules](https://docs.liquibase.com/concepts/basic/sql-format.html?Highlight=sql) and begin with the comment below
 
-```
+{{< admonition >}}
+```sql
 -- liquibase formatted sql
 ```
+{{< /admonition >}}
 
 And each changeset in the file must begin with comment in the following format
 
-```
+{{< admonition >}}
+```sql
 --changeset author:id attribute1:value1 attribute2:value2 [...]
 ```
+{{< /admonition >}}
 
 4\. Run the application
 -----------------------
